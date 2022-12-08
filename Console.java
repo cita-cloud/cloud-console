@@ -3,7 +3,7 @@ public class Console {
     public static native String config(String input);
 
     static {
-        System.loadLibrary("console");
+        System.loadLibrary("console_dylib");
     }
 
     public static void main(String[] args) {

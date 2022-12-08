@@ -1,13 +1,8 @@
-[package]
-name = "console"
-version = "0.1.0"
-authors = ["Rivtower Technologies <contact@rivtower.com>"]
-edition = "2021"
-
-[dependencies]
-cldi = { git = "https://github.com/cita-cloud/cloud-cli", branch = "lib_for_console" }
-cloud-config = { git = "https://github.com/cita-cloud/cloud-config", branch = "lib_for_console" }
-jni = "0.20"
-
-[lib]
-crate_type = ["cdylib"]
+[workspace]
+resolver = "2"
+members = [
+    "console",
+    "dylib",
+    "http",
+    "grpc",
+]

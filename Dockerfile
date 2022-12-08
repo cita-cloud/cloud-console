@@ -12,5 +12,5 @@ RUN cargo build --release
 FROM debian:bullseye-slim
 RUN useradd -m chain
 USER chain
-COPY --from=buildstage /build/target/release/cloud-console /usr/bin/
-CMD ["cloud-console"]
+COPY --from=buildstage /build/target/release/console /usr/bin/
+CMD ["console"]
