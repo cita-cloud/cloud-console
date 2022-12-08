@@ -1,11 +1,9 @@
-pub mod config;
-
 use jni::objects::{JClass, JString};
 use jni::sys::jstring;
 use jni::JNIEnv;
 
 #[no_mangle]
-pub extern "system" fn Java_Console_hello(env: JNIEnv, _class: JClass, input: JString) -> jstring {
+pub extern "system" fn Java_Console_config(env: JNIEnv, _class: JClass, input: JString) -> jstring {
     let input: String = env
         .get_string(input)
         .expect("Couldn't get java string!")
