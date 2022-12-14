@@ -2,6 +2,7 @@
 resolver = "2"
 members = [
     "console",
+    "common",
     "dylib",
     "http",
     "grpc",
