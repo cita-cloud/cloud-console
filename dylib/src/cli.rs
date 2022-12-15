@@ -1,3 +1,17 @@
+// Copyright Rivtower Technologies LLC.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 use console::cli::{
     emergency_brake, set_block_interval, set_quota_limit, update_admin, update_validators,
 };
@@ -6,7 +20,7 @@ use jni::sys::{jobject, jstring};
 use jni::JNIEnv;
 
 #[no_mangle]
-pub extern "system" fn Java_Console_updateAdmin(
+pub extern "system" fn Java_com_cita_v1_Console_updateAdmin(
     env: JNIEnv,
     _class: JClass,
     controller_addr: JString,
@@ -37,7 +51,7 @@ pub extern "system" fn Java_Console_updateAdmin(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_Console_setBlockInterval(
+pub extern "system" fn Java_com_cita_v1_Console_setBlockInterval(
     env: JNIEnv,
     _class: JClass,
     controller_addr: JString,
@@ -70,7 +84,7 @@ pub extern "system" fn Java_Console_setBlockInterval(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_Console_updateValidators(
+pub extern "system" fn Java_com_cita_v1_Console_updateValidators(
     env: JNIEnv,
     _class: JClass,
     controller_addr: JString,
@@ -109,7 +123,7 @@ pub extern "system" fn Java_Console_updateValidators(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_Console_emergencyBrake(
+pub extern "system" fn Java_com_cita_v1_Console_emergencyBrake(
     env: JNIEnv,
     _class: JClass,
     controller_addr: JString,
@@ -140,7 +154,7 @@ pub extern "system" fn Java_Console_emergencyBrake(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_Console_setQuotaLimit(
+pub extern "system" fn Java_com_cita_v1_Console_setQuotaLimit(
     env: JNIEnv,
     _class: JClass,
     controller_addr: JString,

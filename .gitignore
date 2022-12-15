@@ -64,3 +64,4 @@ private_key
 tmp/
 
 *.class
+*.jar

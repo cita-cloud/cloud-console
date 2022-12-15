@@ -1,0 +1,2 @@
+rootProject.name = 'CitaCloudConsole'
+include('console')

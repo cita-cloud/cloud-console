@@ -1,0 +1,25 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.guava:guava:31.1-jre'
+}
+
+version = '0.0.1'
+
+testing {
+    suites {
+        test {
+            useJUnitJupiter('5.9.1')
+        }
+    }
+}
+
+test {
+    testLogging.showStandardStreams = true
+}
