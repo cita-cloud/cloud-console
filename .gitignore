@@ -55,6 +55,7 @@ logs/
 
 # private key
 *_privkey
+private_key
 
 # db file
 *.db

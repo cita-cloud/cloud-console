@@ -6,7 +6,6 @@ edition = "2021"
 
 [dependencies]
 console = { path = "../console" }
-
 jni = "0.20"
 
 [lib]
