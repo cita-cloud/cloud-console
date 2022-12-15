@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.cita.v1;
+package com.cita.cloud;
 
-public class Console {
+public class ConsoleV1 {
     // if crypto_addr is empty, it will generate account from local private_key to
     // send utxo_tx
     // if crypto_addr is not empty, user also needs to input account_addr
@@ -36,6 +36,6 @@ public class Console {
     public static native String updateChainConfig(String input);
 
     static {
-        System.loadLibrary("console_dylib");
+        System.loadLibrary("console_dylib_v1");
     }
 }
