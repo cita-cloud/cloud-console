@@ -26,14 +26,16 @@ use tokio::runtime::Runtime;
 pub fn update_admin(
     controller_addr: String,
     crypto_addr: String,
-    account_addr: String,
+    admin_addr: String,
     new_admin: String,
 ) -> Response<String> {
-    let new_admin: Address = parse_addr(new_admin.as_str()).unwrap();
+    let new_admin: Address = match parse_addr(new_admin.as_str()) {
+        Ok(address) => address,
+        Err(e) => return Response::new(StatusCode::Error, format!("{}", e)),
+    };
 
     let rt = Runtime::new().unwrap();
     let controller_client = rt.block_on(controller_client(controller_addr));
-
     match if crypto_addr.is_empty() {
         rt.block_on(AdminBehaviour::update_admin(
             &controller_client,
@@ -41,7 +43,7 @@ pub fn update_admin(
             new_admin,
         ))
     } else {
-        let crypto_signer = rt.block_on(CryptoClient::connect(crypto_addr, account_addr));
+        let crypto_signer = rt.block_on(CryptoClient::get_crypto_signer(crypto_addr, admin_addr));
         rt.block_on(AdminBehaviour::update_admin(
             &controller_client,
             &crypto_signer,
@@ -56,14 +58,16 @@ pub fn update_admin(
 pub fn set_block_interval(
     controller_addr: String,
     crypto_addr: String,
-    account_addr: String,
+    admin_addr: String,
     block_interval: String,
 ) -> Response<String> {
-    let block_interval = block_interval.parse::<u32>().unwrap();
+    let block_interval = match block_interval.parse::<u32>() {
+        Ok(block_interval) => block_interval,
+        Err(e) => return Response::new(StatusCode::Error, format!("{}", e)),
+    };
 
     let rt = Runtime::new().unwrap();
     let controller_client = rt.block_on(controller_client(controller_addr));
-
     match if crypto_addr.is_empty() {
         rt.block_on(AdminBehaviour::set_block_interval(
             &controller_client,
@@ -71,7 +75,7 @@ pub fn set_block_interval(
             block_interval,
         ))
     } else {
-        let crypto_signer = rt.block_on(CryptoClient::connect(crypto_addr, account_addr));
+        let crypto_signer = rt.block_on(CryptoClient::get_crypto_signer(crypto_addr, admin_addr));
         rt.block_on(AdminBehaviour::set_block_interval(
             &controller_client,
             &crypto_signer,
@@ -86,16 +90,19 @@ pub fn set_block_interval(
 pub fn update_validators(
     controller_addr: String,
     crypto_addr: String,
-    account_addr: String,
-    validators: Vec<String>,
+    admin_addr: String,
+    validators_string: Vec<String>,
 ) -> Response<String> {
-    let validators = validators
-        .into_iter()
-        .map(|v| parse_validator_addr(v.as_str()).unwrap())
-        .collect::<Vec<Vec<u8>>>();
+    let mut validators = vec![];
+    for validator in validators_string {
+        match parse_validator_addr(validator.as_str()) {
+            Ok(validator) => validators.push(validator),
+            Err(e) => return Response::new(StatusCode::Error, format!("{}", e)),
+        }
+    }
+
     let rt = Runtime::new().unwrap();
     let controller_client = rt.block_on(controller_client(controller_addr));
-
     match if crypto_addr.is_empty() {
         rt.block_on(AdminBehaviour::update_validators(
             &controller_client,
@@ -103,7 +110,7 @@ pub fn update_validators(
             &validators,
         ))
     } else {
-        let crypto_signer = rt.block_on(CryptoClient::connect(crypto_addr, account_addr));
+        let crypto_signer = rt.block_on(CryptoClient::get_crypto_signer(crypto_addr, admin_addr));
         rt.block_on(AdminBehaviour::update_validators(
             &controller_client,
             &crypto_signer,
@@ -118,13 +125,13 @@ pub fn update_validators(
 pub fn emergency_brake(
     controller_addr: String,
     crypto_addr: String,
-    account_addr: String,
+    admin_addr: String,
     switch: String,
 ) -> Response<String> {
     let switch = match switch.as_str() {
         "on" => true,
         "off" => false,
-        _ => panic!("unexpected value"),
+        _ => return Response::new(StatusCode::Error, "unexpected switch value".to_string()),
     };
 
     let rt = Runtime::new().unwrap();
@@ -136,7 +143,7 @@ pub fn emergency_brake(
             switch,
         ))
     } else {
-        let crypto_signer = rt.block_on(CryptoClient::connect(crypto_addr, account_addr));
+        let crypto_signer = rt.block_on(CryptoClient::get_crypto_signer(crypto_addr, admin_addr));
         rt.block_on(AdminBehaviour::emergency_brake(
             &controller_client,
             &crypto_signer,
@@ -151,14 +158,16 @@ pub fn emergency_brake(
 pub fn set_quota_limit(
     controller_addr: String,
     crypto_addr: String,
-    account_addr: String,
+    admin_addr: String,
     quota_limit: String,
 ) -> Response<String> {
-    let quota_limit = quota_limit.parse::<u64>().unwrap();
+    let quota_limit = match quota_limit.parse::<u64>() {
+        Ok(quota_limit) => quota_limit,
+        Err(e) => return Response::new(StatusCode::Error, format!("{}", e)),
+    };
 
     let rt = Runtime::new().unwrap();
     let controller_client = rt.block_on(controller_client(controller_addr));
-
     match if crypto_addr.is_empty() {
         rt.block_on(AdminBehaviour::set_quota_limit(
             &controller_client,
@@ -166,7 +175,7 @@ pub fn set_quota_limit(
             quota_limit,
         ))
     } else {
-        let crypto_signer = rt.block_on(CryptoClient::connect(crypto_addr, account_addr));
+        let crypto_signer = rt.block_on(CryptoClient::get_crypto_signer(crypto_addr, admin_addr));
         rt.block_on(AdminBehaviour::set_quota_limit(
             &controller_client,
             &crypto_signer,

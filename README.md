@@ -70,4 +70,6 @@ public class ConsoleV1 {
 
 运行前的准备
 - 正确引用动态连接库
-- 执行应用的目录下需存在`private_key`文件
+- 准备发送治理交易需要的私钥文件**或**`Crypto`服务。
+  - 执行应用的目录下需存在链`admin`账户对应的`private_key`文件。
+  - 或运行链`admin`账户对应的`Crypto`服务，此时需要传入参数`crypto_addr`、`admin_addr`.
