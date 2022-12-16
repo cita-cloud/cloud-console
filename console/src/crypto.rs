@@ -29,11 +29,11 @@ pub const CLIENT_NAME: &str = "console";
 pub struct CryptoClient {
     retry_client:
         OnceCell<cita_cloud_proto::retry::RetryClient<CryptoServiceClient<InterceptedSvc>>>,
-    account_addr: Address,
+    admin_addr: Address,
 }
 
 impl CryptoClient {
-    pub async fn connect(crypto_addr: String, account_addr: String) -> Self {
+    pub async fn get_crypto_signer(crypto_addr: String, admin_addr: String) -> Self {
         let crypto_client = OnceCell::new_with(Some({
             let client_options =
                 ClientOptions::new(CLIENT_NAME.to_string(), format!("http://{crypto_addr}"));
@@ -44,7 +44,7 @@ impl CryptoClient {
         }));
         Self {
             retry_client: crypto_client,
-            account_addr: parse_addr(account_addr.as_str()).unwrap(),
+            admin_addr: parse_addr(admin_addr.as_str()).unwrap(),
         }
     }
 }
@@ -63,7 +63,7 @@ impl SignerBehaviour for CryptoClient {
     }
 
     fn address(&self) -> &[u8] {
-        &self.account_addr
+        &self.admin_addr
     }
 
     fn sign(&self, msg: &[u8]) -> Vec<u8> {

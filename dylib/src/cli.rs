@@ -25,7 +25,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_updateAdmin(
     _class: JClass,
     controller_addr: JString,
     crypto_addr: JString,
-    account_addr: JString,
+    admin_addr: JString,
     new_admin: JString,
 ) -> jstring {
     let controller_addr: String = env
@@ -36,8 +36,8 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_updateAdmin(
         .get_string(crypto_addr)
         .expect("Couldn't get java string!")
         .into();
-    let account_addr: String = env
-        .get_string(account_addr)
+    let admin_addr: String = env
+        .get_string(admin_addr)
         .expect("Couldn't get java string!")
         .into();
     let new_admin: String = env
@@ -45,7 +45,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_updateAdmin(
         .expect("Couldn't get java string!")
         .into();
 
-    env.new_string(update_admin(controller_addr, crypto_addr, account_addr, new_admin).to_json())
+    env.new_string(update_admin(controller_addr, crypto_addr, admin_addr, new_admin).to_json())
         .expect("Couldn't create java string!")
         .into_raw()
 }
@@ -56,7 +56,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_setBlockInterval(
     _class: JClass,
     controller_addr: JString,
     crypto_addr: JString,
-    account_addr: JString,
+    admin_addr: JString,
     block_interval: JString,
 ) -> jstring {
     let controller_addr: String = env
@@ -67,8 +67,8 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_setBlockInterval(
         .get_string(crypto_addr)
         .expect("Couldn't get java string!")
         .into();
-    let account_addr: String = env
-        .get_string(account_addr)
+    let admin_addr: String = env
+        .get_string(admin_addr)
         .expect("Couldn't get java string!")
         .into();
     let block_interval: String = env
@@ -77,7 +77,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_setBlockInterval(
         .into();
 
     env.new_string(
-        set_block_interval(controller_addr, crypto_addr, account_addr, block_interval).to_json(),
+        set_block_interval(controller_addr, crypto_addr, admin_addr, block_interval).to_json(),
     )
     .expect("Couldn't create java string!")
     .into_raw()
@@ -89,7 +89,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_updateValidators(
     _class: JClass,
     controller_addr: JString,
     crypto_addr: JString,
-    account_addr: JString,
+    admin_addr: JString,
     validators_jobject: jobject,
 ) -> jstring {
     let controller_addr: String = env
@@ -100,8 +100,8 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_updateValidators(
         .get_string(crypto_addr)
         .expect("Couldn't get java string!")
         .into();
-    let account_addr: String = env
-        .get_string(account_addr)
+    let admin_addr: String = env
+        .get_string(admin_addr)
         .expect("Couldn't get java string!")
         .into();
     let validators_len = env.get_array_length(validators_jobject).unwrap();
@@ -116,7 +116,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_updateValidators(
     }
 
     env.new_string(
-        update_validators(controller_addr, crypto_addr, account_addr, validators).to_json(),
+        update_validators(controller_addr, crypto_addr, admin_addr, validators).to_json(),
     )
     .expect("Couldn't create java string!")
     .into_raw()
@@ -128,7 +128,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_emergencyBrake(
     _class: JClass,
     controller_addr: JString,
     crypto_addr: JString,
-    account_addr: JString,
+    admin_addr: JString,
     switch: JString,
 ) -> jstring {
     let controller_addr: String = env
@@ -139,8 +139,8 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_emergencyBrake(
         .get_string(crypto_addr)
         .expect("Couldn't get java string!")
         .into();
-    let account_addr: String = env
-        .get_string(account_addr)
+    let admin_addr: String = env
+        .get_string(admin_addr)
         .expect("Couldn't get java string!")
         .into();
     let switch: String = env
@@ -148,7 +148,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_emergencyBrake(
         .expect("Couldn't get java string!")
         .into();
 
-    env.new_string(emergency_brake(controller_addr, crypto_addr, account_addr, switch).to_json())
+    env.new_string(emergency_brake(controller_addr, crypto_addr, admin_addr, switch).to_json())
         .expect("Couldn't create java string!")
         .into_raw()
 }
@@ -159,7 +159,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_setQuotaLimit(
     _class: JClass,
     controller_addr: JString,
     crypto_addr: JString,
-    account_addr: JString,
+    admin_addr: JString,
     quota_limit: JString,
 ) -> jstring {
     let controller_addr: String = env
@@ -170,8 +170,8 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_setQuotaLimit(
         .get_string(crypto_addr)
         .expect("Couldn't get java string!")
         .into();
-    let account_addr: String = env
-        .get_string(account_addr)
+    let admin_addr: String = env
+        .get_string(admin_addr)
         .expect("Couldn't get java string!")
         .into();
     let quota_limit: String = env
@@ -179,9 +179,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_setQuotaLimit(
         .expect("Couldn't get java string!")
         .into();
 
-    env.new_string(
-        set_quota_limit(controller_addr, crypto_addr, account_addr, quota_limit).to_json(),
-    )
-    .expect("Couldn't create java string!")
-    .into_raw()
+    env.new_string(set_quota_limit(controller_addr, crypto_addr, admin_addr, quota_limit).to_json())
+        .expect("Couldn't create java string!")
+        .into_raw()
 }
