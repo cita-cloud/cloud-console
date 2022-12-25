@@ -19,4 +19,8 @@ use serde_repr::Serialize_repr;
 pub enum StatusCode {
     Error = 0,
     Success = 1,
+    NetworkError = 2,
+    ResponseToJsonError = 3,
+    ApiNotExist = 4,
+    ParameterError = 5,
 }
