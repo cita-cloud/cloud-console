@@ -20,16 +20,16 @@ const CACHE_ADDR: &str = "http://192.168.10.120:30067";
 
 async fn handle_response(resp: Result<HttpResponse, Error>) -> Response<String> {
     let Ok(resp) = resp else {
-        return StatusCode::NetworkError.into();
+        return StatusCode::UrlError.into();
     };
     let Ok(resp) = resp.json::<Value>().await else {
-        return StatusCode::ResponseToJsonError.into();
+        return StatusCode::BodyIsNotJson.into();
     };
     let Some(status) = resp["status"].as_u64() else {
         return StatusCode::ApiNotExist.into();
     };
     let 1 = status else {
-        return StatusCode::ParameterError.into();
+        return Response::new(StatusCode::ParameterError, resp["message"].to_string());
     };
     Response::new(StatusCode::Success, resp["data"].to_string())
 }
