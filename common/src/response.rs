@@ -43,7 +43,7 @@ impl<T: Serialize> Response<T> {
     }
 }
 
-impl From<StatusCode> for Response<()> {
+impl<T: Serialize> From<StatusCode> for Response<T> {
     fn from(code: StatusCode) -> Self {
         Self {
             code,
