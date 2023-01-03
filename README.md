@@ -33,7 +33,10 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_updateChainConfig(
 ├── libconsole_dylib.dylib
 └── ...
 
+MacOs:
 ❯ cp './target/release/libconsole_dylib.dylib' ~/Library/java/Extensions/libconsole_dylib_v1.dylib
+Linux:
+❯ sudo cp './target/release/libconsole_dylib.so' /usr/java/packages/lib/libconsole_dylib_v1.so
 
 ❯ exa -TL 1 ~/Library/java/Extensions/
 ├── ...

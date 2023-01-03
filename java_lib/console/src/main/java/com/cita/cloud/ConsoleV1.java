@@ -35,6 +35,32 @@ public class ConsoleV1 {
 
     public static native String updateChainConfig(String input);
 
+    public static native String getBlockNumber();
+
+    public static native String getSystemConfig();
+
+    public static native String getAbi(String address);
+
+    public static native String getAccountNonce(String address);
+    
+    public static native String getBalance(String address);
+
+    public static native String getBlockHash(String block_number);
+
+    public static native String getBlock(String hash_or_height);
+
+    public static native String getCode(String address);
+
+    public static native String getReceipt(String hash);
+
+    public static native String getTx(String hash);
+
+    public static native String call(String data, String from, String height, String to);
+
+    public static native String create(String block_count, String data, String value);
+
+    public static native String sendTx(String block_count, String data,String to, String value);
+
     static {
         System.loadLibrary("console_dylib_v1");
     }

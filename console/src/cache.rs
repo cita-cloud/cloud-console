@@ -15,6 +15,7 @@ use common::{response::Response, status_code::StatusCode};
 use reqwest::Error;
 use reqwest::Response as HttpResponse;
 use serde_json::Value;
+use tokio::runtime::Runtime;
 
 const CACHE_ADDR: &str = "http://192.168.10.120:30067";
 
@@ -34,61 +35,64 @@ async fn handle_response(resp: Result<HttpResponse, Error>) -> Response<String> 
     Response::new(StatusCode::Success, resp["data"].to_string())
 }
 
-async fn http_get(api: &str) -> Response<String> {
-    let http_response = reqwest::get(format!("{}/{}", CACHE_ADDR, api)).await;
-    handle_response(http_response).await
+fn http_get(api: &str) -> Response<String> {
+    let rt = Runtime::new().unwrap();
+    let http_response = rt.block_on(reqwest::get(format!("{}/{}", CACHE_ADDR, api)));
+    rt.block_on(handle_response(http_response))
 }
 
-async fn http_post(api: &str, body: &str) -> Response<String> {
-    let http_response = reqwest::Client::new()
-        .post(format!("{}/{}", CACHE_ADDR, api))
-        .body(body.to_owned())
-        .send()
-        .await;
-    handle_response(http_response).await
+fn http_post(api: &str, body: &str) -> Response<String> {
+    let rt = Runtime::new().unwrap();
+    let http_response = rt.block_on(
+        reqwest::Client::new()
+            .post(format!("{}/{}", CACHE_ADDR, api))
+            .body(body.to_owned())
+            .send(),
+    );
+    rt.block_on(handle_response(http_response))
 }
 
-pub async fn get_block_number() -> Response<String> {
-    http_get("api/get-block-number").await
+pub fn get_block_number() -> Response<String> {
+    http_get("api/get-block-number")
 }
 
-pub async fn get_system_config() -> Response<String> {
-    http_get("api/get-system-config").await
+pub fn get_system_config() -> Response<String> {
+    http_get("api/get-system-config")
 }
 
-pub async fn get_abi(address: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-abi", address)).await
+pub fn get_abi(address: &str) -> Response<String> {
+    http_get(&format!("{}/{}", "api/get-abi", address))
 }
 
-pub async fn get_account_nonce(address: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-account-nonce", address)).await
+pub fn get_account_nonce(address: &str) -> Response<String> {
+    http_get(&format!("{}/{}", "api/get-account-nonce", address))
 }
 
-pub async fn get_balance(address: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-balance", address)).await
+pub fn get_balance(address: &str) -> Response<String> {
+    http_get(&format!("{}/{}", "api/get-balance", address))
 }
 
-pub async fn get_block_hash(block_number: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-block-hash", block_number)).await
+pub fn get_block_hash(block_number: &str) -> Response<String> {
+    http_get(&format!("{}/{}", "api/get-block-hash", block_number))
 }
 
-pub async fn get_block(hash_or_height: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-block", hash_or_height)).await
+pub fn get_block(hash_or_height: &str) -> Response<String> {
+    http_get(&format!("{}/{}", "api/get-block", hash_or_height))
 }
 
-pub async fn get_code(address: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-code", address)).await
+pub fn get_code(address: &str) -> Response<String> {
+    http_get(&format!("{}/{}", "api/get-code", address))
 }
 
-pub async fn get_receipt(hash: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-receipt", hash)).await
+pub fn get_receipt(hash: &str) -> Response<String> {
+    http_get(&format!("{}/{}", "api/get-receipt", hash))
 }
 
-pub async fn get_tx(hash: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-tx", hash)).await
+pub fn get_tx(hash: &str) -> Response<String> {
+    http_get(&format!("{}/{}", "api/get-tx", hash))
 }
 
-pub async fn call(data: &str, from: &str, height: &str, to: &str) -> Response<String> {
+pub fn call(data: &str, from: &str, height: &str, to: &str) -> Response<String> {
     let body = format!(
         r#"{{
         "data": "{}",
@@ -98,10 +102,10 @@ pub async fn call(data: &str, from: &str, height: &str, to: &str) -> Response<St
       }}"#,
         data, from, height, to
     );
-    http_post("api/call", &body).await
+    http_post("api/call", &body)
 }
 
-pub async fn create(block_count: &str, data: &str, value: &str) -> Response<String> {
+pub fn create(block_count: &str, data: &str, value: &str) -> Response<String> {
     let body = format!(
         r#"{{
         "block_count": {},
@@ -110,10 +114,10 @@ pub async fn create(block_count: &str, data: &str, value: &str) -> Response<Stri
       }}"#,
         block_count, data, value
     );
-    http_post("api/create", &body).await
+    http_post("api/create", &body)
 }
 
-pub async fn send_tx(block_count: &str, data: &str, to: &str, value: &str) -> Response<String> {
+pub fn send_tx(block_count: &str, data: &str, to: &str, value: &str) -> Response<String> {
     let body = format!(
         r#"{{
         "block_count": {},
@@ -123,5 +127,5 @@ pub async fn send_tx(block_count: &str, data: &str, to: &str, value: &str) -> Re
       }}"#,
         block_count, data, to, value
     );
-    http_post("api/sendTx", &body).await
+    http_post("api/sendTx", &body)
 }
