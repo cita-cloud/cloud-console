@@ -25,17 +25,22 @@ struct UpdateChainConfigOpts {
     update_yaml_opts: Vec<UpdateYamlOpts>,
 }
 
-pub fn update_chain_config(args: String) -> Response<()> {
+pub fn update_chain_config(args: String) -> Response<String> {
     let Ok(opts) = serde_json::from_str::<UpdateChainConfigOpts>(&args) else {
         return StatusCode::Error.into();
     };
     let Ok(()) = execute_create_k8s(opts.create_k8s_opts) else {
         return StatusCode::Error.into();
     };
+    let mut node_k8s_config_list = vec![];
     for update_yaml_opt in opts.update_yaml_opts {
-        let Ok(()) = execute_update_yaml(update_yaml_opt) else {
+        let Ok(node_k8s_config) = execute_update_yaml(update_yaml_opt) else {
             return StatusCode::Error.into();
         };
+        node_k8s_config_list.push(node_k8s_config);
     }
-    StatusCode::Success.into()
+    let Ok(result) = serde_json::to_string(&node_k8s_config_list) else {
+        return StatusCode::Error.into();
+    };
+    Response::success(result)
 }
