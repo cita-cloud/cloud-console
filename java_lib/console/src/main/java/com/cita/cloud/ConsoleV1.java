@@ -42,7 +42,7 @@ public class ConsoleV1 {
     public static native String getAbi(String address);
 
     public static native String getAccountNonce(String address);
-    
+
     public static native String getBalance(String address);
 
     public static native String getBlockHash(String block_number);
@@ -59,7 +59,7 @@ public class ConsoleV1 {
 
     public static native String create(String block_count, String data, String value);
 
-    public static native String sendTx(String block_count, String data,String to, String value);
+    public static native String sendTx(String block_count, String data, String to, String value);
 
     static {
         System.loadLibrary("console_dylib_v1");

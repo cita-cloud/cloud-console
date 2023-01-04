@@ -27,20 +27,20 @@ struct UpdateChainConfigOpts {
 
 pub fn update_chain_config(args: String) -> Response<String> {
     let Ok(opts) = serde_json::from_str::<UpdateChainConfigOpts>(&args) else {
-        return StatusCode::Error.into();
+        return StatusCode::ParameterError.into();
     };
     let Ok(()) = execute_create_k8s(opts.create_k8s_opts) else {
-        return StatusCode::Error.into();
+        return Response::error(StatusCode::Error, "execute_create_k8s error!");
     };
     let mut node_k8s_config_list = vec![];
     for update_yaml_opt in opts.update_yaml_opts {
         let Ok(node_k8s_config) = execute_update_yaml(update_yaml_opt) else {
-            return StatusCode::Error.into();
+            return Response::error(StatusCode::Error, "execute_update_yaml error!");
         };
         node_k8s_config_list.push(node_k8s_config);
     }
     let Ok(result) = serde_json::to_string(&node_k8s_config_list) else {
-        return StatusCode::Error.into();
+        return StatusCode::BodyIsNotJson.into();
     };
     Response::success(result)
 }
