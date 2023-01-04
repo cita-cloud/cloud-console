@@ -1,0 +1,65 @@
+{
+    "create_k8s_opts": {
+        "chain_name": "sla-bft",
+        "config_dir": "./tmp/",
+        "admin": "0x9bab5858df4a9e84ff3958884a01a4fce5e07edb",
+        "node_list": "localhost:40000:node0:k8s,localhost:40001:node1:k8s,localhost:40002:node2:k8s,localhost:40003:node3:k8s",
+        "controller_tag": "v6.6.3",
+        "consensus_image": "consensus_bft",
+        "consensus_tag": "v6.6.3",
+        "crypto_tag": "v6.6.3",
+        "network_tag": "v6.6.3",
+        "storage_tag": "v6.6.3",
+        "executor_tag": "v6.6.3"
+    },
+    "update_yaml_opts": [
+        {
+            "chain_name": "sla-bft",
+            "config_dir": "./tmp/",
+            "storage_class": "ceph-filesystem",
+            "docker_registry": "docker.io",
+            "docker_repo": "citacloud",
+            "requests_cpu": "120m",
+            "limits_cpu": "1",
+            "requests_memory": "240Mi",
+            "limits_memory": "2Gi",
+            "domain": "node0"
+        },
+        {
+            "chain_name": "sla-bft",
+            "config_dir": "./tmp/",
+            "storage_class": "ceph-filesystem",
+            "docker_registry": "docker.io",
+            "docker_repo": "citacloud",
+            "requests_cpu": "120m",
+            "limits_cpu": "1",
+            "requests_memory": "240Mi",
+            "limits_memory": "2Gi",
+            "domain": "node1"
+        },
+        {
+            "chain_name": "sla-bft",
+            "config_dir": "./tmp/",
+            "storage_class": "ceph-filesystem",
+            "docker_registry": "docker.io",
+            "docker_repo": "citacloud",
+            "requests_cpu": "120m",
+            "limits_cpu": "1",
+            "requests_memory": "240Mi",
+            "limits_memory": "2Gi",
+            "domain": "node2"
+        },
+        {
+            "chain_name": "sla-bft",
+            "config_dir": "./tmp/",
+            "storage_class": "ceph-filesystem",
+            "docker_registry": "docker.io",
+            "docker_repo": "citacloud",
+            "requests_cpu": "120m",
+            "limits_cpu": "1",
+            "requests_memory": "240Mi",
+            "limits_memory": "2Gi",
+            "domain": "node3"
+        }
+    ]
+}

@@ -38,6 +38,14 @@ impl<T: Serialize> Response<T> {
         Self::new(StatusCode::Success, data)
     }
 
+    pub fn error(code: StatusCode, msg: &str) -> Response<T> {
+        Self {
+            code,
+            msg: msg.to_string(),
+            data: None,
+        }
+    }
+
     pub fn to_json(&self) -> String {
         serde_json::to_string(self).unwrap()
     }
