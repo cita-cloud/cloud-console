@@ -21,8 +21,14 @@ use jni::JNIEnv;
 pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBlockNumber(
     env: JNIEnv,
     _class: JClass,
+    cache_addr: JString,
 ) -> jstring {
-    env.new_string(get_block_number().to_json())
+    let cache_addr: String = env
+        .get_string(cache_addr)
+        .expect("Couldn't get java string!")
+        .into();
+
+    env.new_string(get_block_number(&cache_addr).to_json())
         .expect("Couldn't create java string!")
         .into_raw()
 }
@@ -31,8 +37,14 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBlockNumber(
 pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getSystemConfig(
     env: JNIEnv,
     _class: JClass,
+    cache_addr: JString,
 ) -> jstring {
-    env.new_string(get_system_config().to_json())
+    let cache_addr: String = env
+        .get_string(cache_addr)
+        .expect("Couldn't get java string!")
+        .into();
+
+    env.new_string(get_system_config(&cache_addr).to_json())
         .expect("Couldn't create java string!")
         .into_raw()
 }
@@ -41,14 +53,19 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getSystemConfig(
 pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getAbi(
     env: JNIEnv,
     _class: JClass,
+    cache_addr: JString,
     address: JString,
 ) -> jstring {
+    let cache_addr: String = env
+        .get_string(cache_addr)
+        .expect("Couldn't get java string!")
+        .into();
     let address: String = env
         .get_string(address)
         .expect("Couldn't get java string!")
         .into();
 
-    env.new_string(get_abi(&address).to_json())
+    env.new_string(get_abi(&cache_addr, &address).to_json())
         .expect("Couldn't create java string!")
         .into_raw()
 }
@@ -57,14 +74,19 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getAbi(
 pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getAccountNonce(
     env: JNIEnv,
     _class: JClass,
+    cache_addr: JString,
     address: JString,
 ) -> jstring {
+    let cache_addr: String = env
+        .get_string(cache_addr)
+        .expect("Couldn't get java string!")
+        .into();
     let address: String = env
         .get_string(address)
         .expect("Couldn't get java string!")
         .into();
 
-    env.new_string(get_account_nonce(&address).to_json())
+    env.new_string(get_account_nonce(&cache_addr, &address).to_json())
         .expect("Couldn't create java string!")
         .into_raw()
 }
@@ -73,14 +95,19 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getAccountNonce(
 pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBalance(
     env: JNIEnv,
     _class: JClass,
+    cache_addr: JString,
     address: JString,
 ) -> jstring {
+    let cache_addr: String = env
+        .get_string(cache_addr)
+        .expect("Couldn't get java string!")
+        .into();
     let address: String = env
         .get_string(address)
         .expect("Couldn't get java string!")
         .into();
 
-    env.new_string(get_balance(&address).to_json())
+    env.new_string(get_balance(&cache_addr, &address).to_json())
         .expect("Couldn't create java string!")
         .into_raw()
 }
@@ -89,14 +116,19 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBalance(
 pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBlockHash(
     env: JNIEnv,
     _class: JClass,
+    cache_addr: JString,
     block_number: JString,
 ) -> jstring {
+    let cache_addr: String = env
+        .get_string(cache_addr)
+        .expect("Couldn't get java string!")
+        .into();
     let block_number: String = env
         .get_string(block_number)
         .expect("Couldn't get java string!")
         .into();
 
-    env.new_string(get_block_hash(&block_number).to_json())
+    env.new_string(get_block_hash(&cache_addr, &block_number).to_json())
         .expect("Couldn't create java string!")
         .into_raw()
 }
@@ -105,14 +137,19 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBlockHash(
 pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBlock(
     env: JNIEnv,
     _class: JClass,
+    cache_addr: JString,
     hash_or_height: JString,
 ) -> jstring {
+    let cache_addr: String = env
+        .get_string(cache_addr)
+        .expect("Couldn't get java string!")
+        .into();
     let hash_or_height: String = env
         .get_string(hash_or_height)
         .expect("Couldn't get java string!")
         .into();
 
-    env.new_string(get_block(&hash_or_height).to_json())
+    env.new_string(get_block(&cache_addr, &hash_or_height).to_json())
         .expect("Couldn't create java string!")
         .into_raw()
 }
@@ -121,14 +158,19 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBlock(
 pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getCode(
     env: JNIEnv,
     _class: JClass,
+    cache_addr: JString,
     address: JString,
 ) -> jstring {
+    let cache_addr: String = env
+        .get_string(cache_addr)
+        .expect("Couldn't get java string!")
+        .into();
     let address: String = env
         .get_string(address)
         .expect("Couldn't get java string!")
         .into();
 
-    env.new_string(get_code(&address).to_json())
+    env.new_string(get_code(&cache_addr, &address).to_json())
         .expect("Couldn't create java string!")
         .into_raw()
 }
@@ -137,14 +179,19 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getCode(
 pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getReceipt(
     env: JNIEnv,
     _class: JClass,
+    cache_addr: JString,
     hash: JString,
 ) -> jstring {
+    let cache_addr: String = env
+        .get_string(cache_addr)
+        .expect("Couldn't get java string!")
+        .into();
     let hash: String = env
         .get_string(hash)
         .expect("Couldn't get java string!")
         .into();
 
-    env.new_string(get_receipt(&hash).to_json())
+    env.new_string(get_receipt(&cache_addr, &hash).to_json())
         .expect("Couldn't create java string!")
         .into_raw()
 }
@@ -153,14 +200,19 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getReceipt(
 pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getTx(
     env: JNIEnv,
     _class: JClass,
+    cache_addr: JString,
     hash: JString,
 ) -> jstring {
+    let cache_addr: String = env
+        .get_string(cache_addr)
+        .expect("Couldn't get java string!")
+        .into();
     let hash: String = env
         .get_string(hash)
         .expect("Couldn't get java string!")
         .into();
 
-    env.new_string(get_tx(&hash).to_json())
+    env.new_string(get_tx(&cache_addr, &hash).to_json())
         .expect("Couldn't create java string!")
         .into_raw()
 }
@@ -169,11 +221,16 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getTx(
 pub extern "system" fn Java_com_cita_cloud_ConsoleV1_call(
     env: JNIEnv,
     _class: JClass,
+    cache_addr: JString,
     data: JString,
     from: JString,
     height: JString,
     to: JString,
 ) -> jstring {
+    let cache_addr: String = env
+        .get_string(cache_addr)
+        .expect("Couldn't get java string!")
+        .into();
     let data: String = env
         .get_string(data)
         .expect("Couldn't get java string!")
@@ -191,7 +248,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_call(
         .expect("Couldn't get java string!")
         .into();
 
-    env.new_string(call(&data, &from, &height, &to).to_json())
+    env.new_string(call(&cache_addr, &data, &from, &height, &to).to_json())
         .expect("Couldn't create java string!")
         .into_raw()
 }
@@ -200,10 +257,15 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_call(
 pub extern "system" fn Java_com_cita_cloud_ConsoleV1_create(
     env: JNIEnv,
     _class: JClass,
+    cache_addr: JString,
     block_count: JString,
     data: JString,
     value: JString,
 ) -> jstring {
+    let cache_addr: String = env
+        .get_string(cache_addr)
+        .expect("Couldn't get java string!")
+        .into();
     let block_count: String = env
         .get_string(block_count)
         .expect("Couldn't get java string!")
@@ -217,7 +279,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_create(
         .expect("Couldn't get java string!")
         .into();
 
-    env.new_string(create(&block_count, &data, &value).to_json())
+    env.new_string(create(&cache_addr, &block_count, &data, &value).to_json())
         .expect("Couldn't create java string!")
         .into_raw()
 }
@@ -226,11 +288,16 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_create(
 pub extern "system" fn Java_com_cita_cloud_ConsoleV1_sendTx(
     env: JNIEnv,
     _class: JClass,
+    cache_addr: JString,
     block_count: JString,
     data: JString,
     to: JString,
     value: JString,
 ) -> jstring {
+    let cache_addr: String = env
+        .get_string(cache_addr)
+        .expect("Couldn't get java string!")
+        .into();
     let block_count: String = env
         .get_string(block_count)
         .expect("Couldn't get java string!")
@@ -248,7 +315,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_sendTx(
         .expect("Couldn't get java string!")
         .into();
 
-    env.new_string(send_tx(&block_count, &data, &to, &value).to_json())
+    env.new_string(send_tx(&cache_addr, &block_count, &data, &to, &value).to_json())
         .expect("Couldn't create java string!")
         .into_raw()
 }
