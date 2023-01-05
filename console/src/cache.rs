@@ -17,8 +17,6 @@ use reqwest::Response as HttpResponse;
 use serde_json::Value;
 use tokio::runtime::Runtime;
 
-const CACHE_ADDR: &str = "http://192.168.10.120:30067";
-
 async fn handle_response(resp: Result<HttpResponse, Error>) -> Response<String> {
     let Ok(resp) = resp else {
         return StatusCode::UrlError.into();
@@ -30,69 +28,81 @@ async fn handle_response(resp: Result<HttpResponse, Error>) -> Response<String> 
         return StatusCode::ApiNotExist.into();
     };
     let 1 = status else {
-        return Response::new(StatusCode::ParameterError, resp["message"].to_string());
+        return Response::error(StatusCode::ParameterError, resp["message"].to_string().trim_matches('"'));
     };
-    Response::new(StatusCode::Success, resp["data"].to_string())
+    Response::new(
+        StatusCode::Success,
+        resp["data"].to_string().trim_matches('"').to_string(),
+    )
 }
 
-fn http_get(api: &str) -> Response<String> {
+fn http_get(url: &str) -> Response<String> {
     let rt = Runtime::new().unwrap();
-    let http_response = rt.block_on(reqwest::get(format!("{}/{}", CACHE_ADDR, api)));
+    let http_response = rt.block_on(reqwest::get(url));
     rt.block_on(handle_response(http_response))
 }
 
-fn http_post(api: &str, body: &str) -> Response<String> {
+fn http_post(url: &str, body: &str) -> Response<String> {
     let rt = Runtime::new().unwrap();
     let http_response = rt.block_on(
         reqwest::Client::new()
-            .post(format!("{}/{}", CACHE_ADDR, api))
+            .post(url)
             .body(body.to_owned())
             .send(),
     );
     rt.block_on(handle_response(http_response))
 }
 
-pub fn get_block_number() -> Response<String> {
-    http_get("api/get-block-number")
+pub fn get_block_number(cache_addr: &str) -> Response<String> {
+    http_get(&format!("{}/{}", cache_addr, "api/get-block-number"))
 }
 
-pub fn get_system_config() -> Response<String> {
-    http_get("api/get-system-config")
+pub fn get_system_config(cache_addr: &str) -> Response<String> {
+    http_get(&format!("{}/{}", cache_addr, "api/get-system-config"))
 }
 
-pub fn get_abi(address: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-abi", address))
+pub fn get_abi(cache_addr: &str, address: &str) -> Response<String> {
+    http_get(&format!("{}/{}/{}", cache_addr, "api/get-abi", address))
 }
 
-pub fn get_account_nonce(address: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-account-nonce", address))
+pub fn get_account_nonce(cache_addr: &str, address: &str) -> Response<String> {
+    http_get(&format!(
+        "{}/{}/{}",
+        cache_addr, "api/get-account-nonce", address
+    ))
 }
 
-pub fn get_balance(address: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-balance", address))
+pub fn get_balance(cache_addr: &str, address: &str) -> Response<String> {
+    http_get(&format!("{}/{}/{}", cache_addr, "api/get-balance", address))
 }
 
-pub fn get_block_hash(block_number: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-block-hash", block_number))
+pub fn get_block_hash(cache_addr: &str, block_number: &str) -> Response<String> {
+    http_get(&format!(
+        "{}/{}/{}",
+        cache_addr, "api/get-block-hash", block_number
+    ))
 }
 
-pub fn get_block(hash_or_height: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-block", hash_or_height))
+pub fn get_block(cache_addr: &str, hash_or_height: &str) -> Response<String> {
+    http_get(&format!(
+        "{}/{}/{}",
+        cache_addr, "api/get-block", hash_or_height
+    ))
 }
 
-pub fn get_code(address: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-code", address))
+pub fn get_code(cache_addr: &str, address: &str) -> Response<String> {
+    http_get(&format!("{}/{}/{}", cache_addr, "api/get-code", address))
 }
 
-pub fn get_receipt(hash: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-receipt", hash))
+pub fn get_receipt(cache_addr: &str, hash: &str) -> Response<String> {
+    http_get(&format!("{}/{}/{}", cache_addr, "api/get-receipt", hash))
 }
 
-pub fn get_tx(hash: &str) -> Response<String> {
-    http_get(&format!("{}/{}", "api/get-tx", hash))
+pub fn get_tx(cache_addr: &str, hash: &str) -> Response<String> {
+    http_get(&format!("{}/{}/{}", cache_addr, "api/get-tx", hash))
 }
 
-pub fn call(data: &str, from: &str, height: &str, to: &str) -> Response<String> {
+pub fn call(cache_addr: &str, data: &str, from: &str, height: &str, to: &str) -> Response<String> {
     let body = format!(
         r#"{{
         "data": "{}",
@@ -102,10 +112,10 @@ pub fn call(data: &str, from: &str, height: &str, to: &str) -> Response<String> 
       }}"#,
         data, from, height, to
     );
-    http_post("api/call", &body)
+    http_post(&format!("{}/{}", cache_addr, "api/call"), &body)
 }
 
-pub fn create(block_count: &str, data: &str, value: &str) -> Response<String> {
+pub fn create(cache_addr: &str, block_count: &str, data: &str, value: &str) -> Response<String> {
     let body = format!(
         r#"{{
         "block_count": {},
@@ -114,10 +124,16 @@ pub fn create(block_count: &str, data: &str, value: &str) -> Response<String> {
       }}"#,
         block_count, data, value
     );
-    http_post("api/create", &body)
+    http_post(&format!("{}/{}", cache_addr, "api/create"), &body)
 }
 
-pub fn send_tx(block_count: &str, data: &str, to: &str, value: &str) -> Response<String> {
+pub fn send_tx(
+    cache_addr: &str,
+    block_count: &str,
+    data: &str,
+    to: &str,
+    value: &str,
+) -> Response<String> {
     let body = format!(
         r#"{{
         "block_count": {},
@@ -127,5 +143,5 @@ pub fn send_tx(block_count: &str, data: &str, to: &str, value: &str) -> Response
       }}"#,
         block_count, data, to, value
     );
-    http_post("api/sendTx", &body)
+    http_post(&format!("{}/{}", cache_addr, "api/sendTx"), &body)
 }

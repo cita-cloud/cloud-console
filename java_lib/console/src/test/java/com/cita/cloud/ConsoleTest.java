@@ -34,20 +34,23 @@ class ConsoleTest {
         // "1073741716"));
         // System.out.println(ConsoleV1.updateAdmin("localhost:50004", "", "", ""));
 
-        System.out.println(ConsoleV1.getBlockNumber());
-        System.out.println(ConsoleV1.getSystemConfig());
-        System.out.println(ConsoleV1.getAbi("b3eefbf4e5280217da74b83f316c5711827933a0"));
-        System.out.println(ConsoleV1.getAccountNonce("757ca1c731a3d7e9bdbd0e22ee65918674a77bd7"));
-        System.out.println(ConsoleV1.getBalance("757ca1c731a3d7e9bdbd0e22ee65918674a77bd7"));
-        System.out.println(ConsoleV1.getBlockHash("100"));
-        System.out.println(ConsoleV1.getBlock("100"));
-        System.out.println(ConsoleV1.getCode("b3eefbf4e5280217da74b83f316c5711827933a0"));
-        System.out.println(ConsoleV1.getReceipt("0x9251b32a617e08e8f5deb8468229269b969489069752c3e67c69a1f44909ca1b"));
-        System.out.println(ConsoleV1.getTx("0x9251b32a617e08e8f5deb8468229269b969489069752c3e67c69a1f44909ca1b"));
-        System.out.println(ConsoleV1.call("0x06661abd", "string", "0", "0xb3eefbf4e5280217da74b83f316c5711827933a0"));
-        System.out.println(ConsoleV1.create("20",
-                "0x608060405234801561001057600080fd5b5060f58061001f6000396000f3006080604052600436106053576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806306661abd1460585780634f2be91f146080578063d826f88f146094575b600080fd5b348015606357600080fd5b50606a60a8565b6040518082815260200191505060405180910390f35b348015608b57600080fd5b50609260ae565b005b348015609f57600080fd5b5060a660c0565b005b60005481565b60016000808282540192505081905550565b600080819055505600a165627a7a72305820faa1d1f51d7b5ca2b200e0f6cdef4f2d7e44ee686209e300beb1146f40d32dee0029",
-                "0x0"));
-        System.out.println(ConsoleV1.sendTx("20", "0x4f2be91f", "0x524268b46968103ce8323353dab16ae857f09a6f", "0x0"));
+        // need to specify the cache_addr before test
+        // String cache_addr = "";
+        // System.out.println(ConsoleV1.getBlockNumber(cache_addr));
+        // System.out.println(ConsoleV1.getSystemConfig(cache_addr));
+        // System.out.println(ConsoleV1.getAbi(cache_addr, "b3eefbf4e5280217da74b83f316c5711827933a0"));
+        // System.out.println(ConsoleV1.getAccountNonce(cache_addr, "757ca1c731a3d7e9bdbd0e22ee65918674a77bd7"));
+        // System.out.println(ConsoleV1.getBalance(cache_addr, "757ca1c731a3d7e9bdbd0e22ee65918674a77bd7"));
+        // System.out.println(ConsoleV1.getBlockHash(cache_addr, "100"));
+        // System.out.println(ConsoleV1.getBlock(cache_addr, "100"));
+        // System.out.println(ConsoleV1.getCode(cache_addr, "b3eefbf4e5280217da74b83f316c5711827933a0"));
+        // System.out.println(ConsoleV1.getReceipt(cache_addr, "0x9251b32a617e08e8f5deb8468229269b969489069752c3e67c69a1f44909ca1b"));
+        // System.out.println(ConsoleV1.getTx(cache_addr, "0x9251b32a617e08e8f5deb8468229269b969489069752c3e67c69a1f44909ca1b"));
+        // System.out.println(ConsoleV1.call(cache_addr, "0x06661abd", "string", "0", "0xb3eefbf4e5280217da74b83f316c5711827933a0"));
+        // System.out.println(ConsoleV1.create(cache_addr, 
+        //         "20",
+        //         "0x608060405234801561001057600080fd5b5060f58061001f6000396000f3006080604052600436106053576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806306661abd1460585780634f2be91f146080578063d826f88f146094575b600080fd5b348015606357600080fd5b50606a60a8565b6040518082815260200191505060405180910390f35b348015608b57600080fd5b50609260ae565b005b348015609f57600080fd5b5060a660c0565b005b60005481565b60016000808282540192505081905550565b600080819055505600a165627a7a72305820faa1d1f51d7b5ca2b200e0f6cdef4f2d7e44ee686209e300beb1146f40d32dee0029",
+        //         "0x0"));
+        // System.out.println(ConsoleV1.sendTx(cache_addr, "20", "0x4f2be91f", "0x524268b46968103ce8323353dab16ae857f09a6f", "0x0"));
     }
 }
