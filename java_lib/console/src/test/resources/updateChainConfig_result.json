@@ -1,0 +1,2214 @@
+[
+    {
+        "cm_config": {
+            "apiVersion": "v1",
+            "kind": "ConfigMap",
+            "data": {
+                "config.toml": "[network_zenoh]\\nca_cert = \\\"\\\"\\\"\\n-----BEGIN CERTIFICATE-----\\\\r\\nMIIBaTCCAQ+gAwIBAgIJAM43mMOcL6YRMAoGCCqGSM49BAMCMB8xEDAOBgNVBAoM\\\\r\\nB0NJVEFIdWIxCzAJBgNVBAMTAkNBMCAXDTc1MDEwMTAwMDAwMFoYDzQwOTYwMTAx\\\\r\\nMDAwMDAwWjAfMRAwDgYDVQQKDAdDSVRBSHViMQswCQYDVQQDEwJDQTBZMBMGByqG\\\\r\\nSM49AgEGCCqGSM49AwEHA0IABDflNgHiRCzc9ROEXKJ0OX8cJRA6BZHgMMlk750e\\\\r\\n1Gxyx+9Bnz9gGVex5d+tEwGKMBo75BHeXbXJutpxN+NBei2jMjAwMB0GA1UdDgQW\\\\r\\nBBQRpi+cw5g3zndqeJRH6YpxyTs3JjAPBgNVHRMBAf8EBTADAQH/MAoGCCqGSM49\\\\r\\nBAMCA0gAMEUCIQDpxZjXt8arZdOh0wE0iJccHeHHH1AI6rzUx4ZQbtutTwIgP1to\\\\r\\nxAAx/7NGlZvqVzavkbLqoIIAF5f2SyFjRiYcyFU=\\\\r\\n-----END CERTIFICATE-----\\\\r\\n\\\"\\\"\\\"\\ncert = \\\"\\\"\\\"\\n-----BEGIN CERTIFICATE-----\\\\r\\nMIIBXjCCAQSgAwIBAgIJAIb5r7zhN6FsMAoGCCqGSM49BAMCMB8xEDAOBgNVBAoM\\\\r\\nB0NJVEFIdWIxCzAJBgNVBAMTAkNBMCAXDTc1MDEwMTAwMDAwMFoYDzQwOTYwMTAx\\\\r\\nMDAwMDAwWjAqMRAwDgYDVQQKDAdDSVRBSHViMRYwFAYDVQQDEw1zbGEtYmZ0LW5v\\\\r\\nZGUwMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEhHsqXFFljBAds9V2mc56M/Ei\\\\r\\nvaySNUWYPxKVB0ugvkftgY2vyJhRmYvXfZdXsbXqRHJ1mxsueCX4ftvLbvP8waMc\\\\r\\nMBowGAYDVR0RBBEwD4INc2xhLWJmdC1ub2RlMDAKBggqhkjOPQQDAgNIADBFAiEA\\\\r\\nhq8cZhNe2oALkgrzmonKGM8rsx7i02o1brmPljoNVXICIClkNBzQhG+zAMfVF1gY\\\\r\\nHY3vCmBLbNxoR32iqHgJCWWU\\\\r\\n-----END CERTIFICATE-----\\\\r\\n\\\"\\\"\\\"\\nchain_id = '16fd6e0196d12e7e9ed4e9b7e2b891102e05bb13ebce23472c00791b6688f13f'\\ndomain = 'sla-bft-node0'\\nenable_metrics = true\\ngrpc_port = 50000\\nmetrics_port = 60000\\nnode_address = '/mnt/node_address'\\nport = 40000\\npriv_key = \\\"\\\"\\\"\\n-----BEGIN PRIVATE KEY-----\\\\r\\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgQkUaloZbqPzKhep5\\\\r\\nVnDntjHcXyPdpxXYNtuRlIXkICuhRANCAASEeypcUWWMEB2z1XaZznoz8SK9rJI1\\\\r\\nRZg/EpUHS6C+R+2Bja/ImFGZi9d9l1extepEcnWbGy54Jfh+28tu8/zB\\\\r\\n-----END PRIVATE KEY-----\\\\r\\n\\\"\\\"\\\"\\nprotocol = 'quic'\\nvalidator_address = '/mnt/validator_address'\\n\\n[[network_zenoh.modules]]\\nhostname = '127.0.0.1'\\nmodule_name = 'consensus'\\nport = 50001\\n\\n[[network_zenoh.modules]]\\nhostname = '127.0.0.1'\\nmodule_name = 'controller'\\nport = 50004\\n\\n[[network_zenoh.peers]]\\ndomain = 'sla-bft-node1'\\nport = 40000\\nprotocol = 'quic'\\n\\n[[network_zenoh.peers]]\\ndomain = 'sla-bft-node2'\\nport = 40000\\nprotocol = 'quic'\\n\\n[[network_zenoh.peers]]\\ndomain = 'sla-bft-node3'\\nport = 40000\\nprotocol = 'quic'\\n\\n[consensus_bft]\\nconsensus_port = 50001\\ncontroller_port = 50004\\ncrypto_port = 50005\\nenable_metrics = true\\nmetrics_port = 60001\\nnetwork_port = 50000\\nnode_address = '/mnt/node_address'\\n\\n[executor_evm]\\nenable_metrics = true\\nexecutor_port = 50002\\nmetrics_port = 60002\\n\\n[storage_rocksdb]\\ncrypto_port = 50005\\nenable_metrics = true\\nmetrics_port = 60003\\nstorage_port = 50003\\n\\n[genesis_block]\\nprevhash = '0x0000000000000000000000000000000000000000000000000000000000000000'\\ntimestamp = 1672885240215\\n\\n[system_config]\\nadmin = '9bab5858df4a9e84ff3958884a01a4fce5e07edb'\\nblock_interval = 3\\nblock_limit = 100\\nchain_id = '16fd6e0196d12e7e9ed4e9b7e2b891102e05bb13ebce23472c00791b6688f13f'\\nquota_limit = 1073741824\\nvalidators = [\\n    'bae6fbe2b15a16d3ce73ef86cc36b11f0dbdbb41',\\n    'ace0bf19656b661bfeb29ec91eed6c59f9e2e3cc',\\n    'ca1fd593cb5d8d89c1f6576f4b0a01097b67460f',\\n    '2c14a2fa6c16f5b4643e904a98fcfcb0f0364472',\\n]\\nversion = 0\\n\\n[controller]\\nconsensus_port = 50001\\ncontroller_port = 50004\\ncrypto_port = 50005\\nenable_metrics = true\\nexecutor_port = 50002\\nmetrics_port = 60004\\nnetwork_port = 50000\\nnode_address = '/mnt/node_address'\\nstorage_port = 50003\\nvalidator_address_len = 20\\n\\n[crypto_sm]\\ncrypto_port = 50005\\nenable_metrics = true\\nmetrics_port = 60005\\n\\n"
+            },
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node0"
+                },
+                "name": "sla-bft-node0-config"
+            }
+        },
+        "cm_log": {
+            "apiVersion": "v1",
+            "kind": "ConfigMap",
+            "data": {
+                "consensus-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/consensus-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/consensus-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "controller-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/controller-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/controller-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "crypto-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/crypto-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/crypto-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "executor-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/executor-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/executor-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "network-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/network-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/network-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "storage-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/storage-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/storage-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n"
+            },
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node0"
+                },
+                "name": "sla-bft-node0-log"
+            }
+        },
+        "cm_account": {
+            "apiVersion": "v1",
+            "kind": "ConfigMap",
+            "binaryData": {
+                "private_key": "NDI4NzcyZWE2MjU1M2Y0MmFmMmIxNmIwZGRmNTk0YjdlYTFhNjExYmVjZjEwNmE0MzNmZmJkZGRjZDY2OTg1ZA=="
+            },
+            "data": {
+                "node_address": "bae6fbe2b15a16d3ce73ef86cc36b11f0dbdbb41",
+                "validator_address": "bae6fbe2b15a16d3ce73ef86cc36b11f0dbdbb41"
+            },
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node0"
+                },
+                "name": "sla-bft-node0-account"
+            }
+        },
+        "statefulset": {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node0"
+                },
+                "name": "sla-bft-node0"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app.kubernetes.io/chain-name": "sla-bft",
+                        "app.kubernetes.io/chain-node": "sla-bft-node0"
+                    }
+                },
+                "serviceName": "",
+                "template": {
+                    "metadata": {
+                        "labels": {
+                            "app.kubernetes.io/chain-name": "sla-bft",
+                            "app.kubernetes.io/chain-node": "sla-bft-node0"
+                        }
+                    },
+                    "spec": {
+                        "affinity": {
+                            "podAntiAffinity": {
+                                "preferredDuringSchedulingIgnoredDuringExecution": [
+                                    {
+                                        "podAffinityTerm": {
+                                            "labelSelector": {
+                                                "matchExpressions": [
+                                                    {
+                                                        "key": "app.kubernetes.io/chain-name",
+                                                        "operator": "In",
+                                                        "values": [
+                                                            "sla-bft"
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "topologyKey": "kubernetes.io/hostname"
+                                        },
+                                        "weight": 100
+                                    }
+                                ]
+                            }
+                        },
+                        "containers": [
+                            {
+                                "command": [
+                                    "network",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/network-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/network_zenoh:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50000"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "network",
+                                "ports": [
+                                    {
+                                        "containerPort": 40000,
+                                        "name": "network",
+                                        "protocol": "UDP"
+                                    },
+                                    {
+                                        "containerPort": 50000,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "consensus",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/consensus-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/consensus_bft:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50001"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "consensus",
+                                "ports": [
+                                    {
+                                        "containerPort": 50001,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "executor",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/executor-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/executor_evm:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50002"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "executor",
+                                "ports": [
+                                    {
+                                        "containerPort": 50002,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "storage",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/storage-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/storage_rocksdb:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50003"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "storage",
+                                "ports": [
+                                    {
+                                        "containerPort": 50003,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "controller",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/controller-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/controller:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50004"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 60,
+                                    "periodSeconds": 10
+                                },
+                                "name": "controller",
+                                "ports": [
+                                    {
+                                        "containerPort": 50004,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "crypto",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/crypto-log4rs.yaml",
+                                    "-p",
+                                    "/mnt/private_key"
+                                ],
+                                "image": "docker.io/citacloud/crypto_sm:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50005"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "crypto",
+                                "ports": [
+                                    {
+                                        "containerPort": 50005,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            }
+                        ],
+                        "hostAliases": [
+                            {
+                                "hostnames": [
+                                    "sla-bft-node0"
+                                ],
+                                "ip": "0.0.0.0"
+                            }
+                        ],
+                        "securityContext": {
+                            "fsGroup": 1000,
+                            "runAsGroup": 1000,
+                            "runAsUser": 1000
+                        },
+                        "volumes": [
+                            {
+                                "configMap": {
+                                    "name": "sla-bft-node0-account"
+                                },
+                                "name": "node-account"
+                            },
+                            {
+                                "configMap": {
+                                    "name": "sla-bft-node0-config"
+                                },
+                                "name": "node-config"
+                            },
+                            {
+                                "configMap": {
+                                    "name": "sla-bft-node0-log"
+                                },
+                                "name": "node-log"
+                            }
+                        ]
+                    }
+                },
+                "volumeClaimTemplates": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "PersistentVolumeClaim",
+                        "metadata": {
+                            "name": "datadir"
+                        },
+                        "spec": {
+                            "accessModes": [
+                                "ReadWriteOnce"
+                            ],
+                            "resources": {
+                                "requests": {
+                                    "storage": "10Gi"
+                                }
+                            },
+                            "storageClassName": "ceph-filesystem"
+                        }
+                    }
+                ]
+            }
+        },
+        "node_svc": {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node0"
+                },
+                "name": "sla-bft-node0"
+            },
+            "spec": {
+                "ports": [
+                    {
+                        "name": "network",
+                        "port": 40000,
+                        "protocol": "UDP",
+                        "targetPort": 40000
+                    },
+                    {
+                        "name": "rpc",
+                        "port": 50004,
+                        "protocol": "TCP",
+                        "targetPort": 50004
+                    },
+                    {
+                        "name": "call",
+                        "port": 50002,
+                        "protocol": "TCP",
+                        "targetPort": 50002
+                    }
+                ],
+                "selector": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node0"
+                },
+                "type": "ClusterIP"
+            }
+        }
+    },
+    {
+        "cm_config": {
+            "apiVersion": "v1",
+            "kind": "ConfigMap",
+            "data": {
+                "config.toml": "[network_zenoh]\\nca_cert = \\\"\\\"\\\"\\n-----BEGIN CERTIFICATE-----\\\\r\\nMIIBaTCCAQ+gAwIBAgIJAM43mMOcL6YRMAoGCCqGSM49BAMCMB8xEDAOBgNVBAoM\\\\r\\nB0NJVEFIdWIxCzAJBgNVBAMTAkNBMCAXDTc1MDEwMTAwMDAwMFoYDzQwOTYwMTAx\\\\r\\nMDAwMDAwWjAfMRAwDgYDVQQKDAdDSVRBSHViMQswCQYDVQQDEwJDQTBZMBMGByqG\\\\r\\nSM49AgEGCCqGSM49AwEHA0IABDflNgHiRCzc9ROEXKJ0OX8cJRA6BZHgMMlk750e\\\\r\\n1Gxyx+9Bnz9gGVex5d+tEwGKMBo75BHeXbXJutpxN+NBei2jMjAwMB0GA1UdDgQW\\\\r\\nBBQRpi+cw5g3zndqeJRH6YpxyTs3JjAPBgNVHRMBAf8EBTADAQH/MAoGCCqGSM49\\\\r\\nBAMCA0gAMEUCIQDpxZjXt8arZdOh0wE0iJccHeHHH1AI6rzUx4ZQbtutTwIgP1to\\\\r\\nxAAx/7NGlZvqVzavkbLqoIIAF5f2SyFjRiYcyFU=\\\\r\\n-----END CERTIFICATE-----\\\\r\\n\\\"\\\"\\\"\\ncert = \\\"\\\"\\\"\\n-----BEGIN CERTIFICATE-----\\\\r\\nMIIBXTCCAQSgAwIBAgIJAKX1bngtsRFTMAoGCCqGSM49BAMCMB8xEDAOBgNVBAoM\\\\r\\nB0NJVEFIdWIxCzAJBgNVBAMTAkNBMCAXDTc1MDEwMTAwMDAwMFoYDzQwOTYwMTAx\\\\r\\nMDAwMDAwWjAqMRAwDgYDVQQKDAdDSVRBSHViMRYwFAYDVQQDEw1zbGEtYmZ0LW5v\\\\r\\nZGUxMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE9WlZJxWkDYO6Agsb5TpH/SYD\\\\r\\nTNuSIy9pngZHBE+ASIxxU9Xdcf1gFwY8la3BxaD3tMmy3v3eG2ICXgMbaAoAfaMc\\\\r\\nMBowGAYDVR0RBBEwD4INc2xhLWJmdC1ub2RlMTAKBggqhkjOPQQDAgNHADBEAiAM\\\\r\\n1VKju6WU5DJIrlJ7uzzBCs/mwEj+DSr72ZUGNHyFbQIgLzKx50rKLzVAFHBOlG8c\\\\r\\n6mHvaaOExZfadwK+VKFZBl8=\\\\r\\n-----END CERTIFICATE-----\\\\r\\n\\\"\\\"\\\"\\nchain_id = '16fd6e0196d12e7e9ed4e9b7e2b891102e05bb13ebce23472c00791b6688f13f'\\ndomain = 'sla-bft-node1'\\nenable_metrics = true\\ngrpc_port = 50000\\nmetrics_port = 60000\\nnode_address = '/mnt/node_address'\\nport = 40000\\npriv_key = \\\"\\\"\\\"\\n-----BEGIN PRIVATE KEY-----\\\\r\\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgDyb3+1SdCfmvSQAB\\\\r\\n9eBkPQepwCmj0wFssaDvy6cdZoqhRANCAAT1aVknFaQNg7oCCxvlOkf9JgNM25Ij\\\\r\\nL2meBkcET4BIjHFT1d1x/WAXBjyVrcHFoPe0ybLe/d4bYgJeAxtoCgB9\\\\r\\n-----END PRIVATE KEY-----\\\\r\\n\\\"\\\"\\\"\\nprotocol = 'quic'\\nvalidator_address = '/mnt/validator_address'\\n\\n[[network_zenoh.modules]]\\nhostname = '127.0.0.1'\\nmodule_name = 'consensus'\\nport = 50001\\n\\n[[network_zenoh.modules]]\\nhostname = '127.0.0.1'\\nmodule_name = 'controller'\\nport = 50004\\n\\n[[network_zenoh.peers]]\\ndomain = 'sla-bft-node0'\\nport = 40000\\nprotocol = 'quic'\\n\\n[[network_zenoh.peers]]\\ndomain = 'sla-bft-node2'\\nport = 40000\\nprotocol = 'quic'\\n\\n[[network_zenoh.peers]]\\ndomain = 'sla-bft-node3'\\nport = 40000\\nprotocol = 'quic'\\n\\n[consensus_bft]\\nconsensus_port = 50001\\ncontroller_port = 50004\\ncrypto_port = 50005\\nenable_metrics = true\\nmetrics_port = 60001\\nnetwork_port = 50000\\nnode_address = '/mnt/node_address'\\n\\n[executor_evm]\\nenable_metrics = true\\nexecutor_port = 50002\\nmetrics_port = 60002\\n\\n[storage_rocksdb]\\ncrypto_port = 50005\\nenable_metrics = true\\nmetrics_port = 60003\\nstorage_port = 50003\\n\\n[genesis_block]\\nprevhash = '0x0000000000000000000000000000000000000000000000000000000000000000'\\ntimestamp = 1672885240215\\n\\n[system_config]\\nadmin = '9bab5858df4a9e84ff3958884a01a4fce5e07edb'\\nblock_interval = 3\\nblock_limit = 100\\nchain_id = '16fd6e0196d12e7e9ed4e9b7e2b891102e05bb13ebce23472c00791b6688f13f'\\nquota_limit = 1073741824\\nvalidators = [\\n    'bae6fbe2b15a16d3ce73ef86cc36b11f0dbdbb41',\\n    'ace0bf19656b661bfeb29ec91eed6c59f9e2e3cc',\\n    'ca1fd593cb5d8d89c1f6576f4b0a01097b67460f',\\n    '2c14a2fa6c16f5b4643e904a98fcfcb0f0364472',\\n]\\nversion = 0\\n\\n[controller]\\nconsensus_port = 50001\\ncontroller_port = 50004\\ncrypto_port = 50005\\nenable_metrics = true\\nexecutor_port = 50002\\nmetrics_port = 60004\\nnetwork_port = 50000\\nnode_address = '/mnt/node_address'\\nstorage_port = 50003\\nvalidator_address_len = 20\\n\\n[crypto_sm]\\ncrypto_port = 50005\\nenable_metrics = true\\nmetrics_port = 60005\\n\\n"
+            },
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node1"
+                },
+                "name": "sla-bft-node1-config"
+            }
+        },
+        "cm_log": {
+            "apiVersion": "v1",
+            "kind": "ConfigMap",
+            "data": {
+                "consensus-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/consensus-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/consensus-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "controller-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/controller-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/controller-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "crypto-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/crypto-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/crypto-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "executor-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/executor-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/executor-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "network-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/network-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/network-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "storage-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/storage-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/storage-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n"
+            },
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node1"
+                },
+                "name": "sla-bft-node1-log"
+            }
+        },
+        "cm_account": {
+            "apiVersion": "v1",
+            "kind": "ConfigMap",
+            "binaryData": {
+                "private_key": "MGJhNjk3NDk3ZGE0YzViMjEyNjdlNDc4OTE4MDdjMmEyYmFjZDFiOWU3M2UwZmQ4NWJjMzE4ZjVhZTg3M2FmZA=="
+            },
+            "data": {
+                "node_address": "ace0bf19656b661bfeb29ec91eed6c59f9e2e3cc",
+                "validator_address": "ace0bf19656b661bfeb29ec91eed6c59f9e2e3cc"
+            },
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node1"
+                },
+                "name": "sla-bft-node1-account"
+            }
+        },
+        "statefulset": {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node1"
+                },
+                "name": "sla-bft-node1"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app.kubernetes.io/chain-name": "sla-bft",
+                        "app.kubernetes.io/chain-node": "sla-bft-node1"
+                    }
+                },
+                "serviceName": "",
+                "template": {
+                    "metadata": {
+                        "labels": {
+                            "app.kubernetes.io/chain-name": "sla-bft",
+                            "app.kubernetes.io/chain-node": "sla-bft-node1"
+                        }
+                    },
+                    "spec": {
+                        "affinity": {
+                            "podAntiAffinity": {
+                                "preferredDuringSchedulingIgnoredDuringExecution": [
+                                    {
+                                        "podAffinityTerm": {
+                                            "labelSelector": {
+                                                "matchExpressions": [
+                                                    {
+                                                        "key": "app.kubernetes.io/chain-name",
+                                                        "operator": "In",
+                                                        "values": [
+                                                            "sla-bft"
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "topologyKey": "kubernetes.io/hostname"
+                                        },
+                                        "weight": 100
+                                    }
+                                ]
+                            }
+                        },
+                        "containers": [
+                            {
+                                "command": [
+                                    "network",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/network-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/network_zenoh:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50000"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "network",
+                                "ports": [
+                                    {
+                                        "containerPort": 40000,
+                                        "name": "network",
+                                        "protocol": "UDP"
+                                    },
+                                    {
+                                        "containerPort": 50000,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "consensus",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/consensus-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/consensus_bft:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50001"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "consensus",
+                                "ports": [
+                                    {
+                                        "containerPort": 50001,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "executor",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/executor-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/executor_evm:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50002"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "executor",
+                                "ports": [
+                                    {
+                                        "containerPort": 50002,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "storage",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/storage-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/storage_rocksdb:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50003"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "storage",
+                                "ports": [
+                                    {
+                                        "containerPort": 50003,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "controller",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/controller-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/controller:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50004"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 60,
+                                    "periodSeconds": 10
+                                },
+                                "name": "controller",
+                                "ports": [
+                                    {
+                                        "containerPort": 50004,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "crypto",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/crypto-log4rs.yaml",
+                                    "-p",
+                                    "/mnt/private_key"
+                                ],
+                                "image": "docker.io/citacloud/crypto_sm:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50005"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "crypto",
+                                "ports": [
+                                    {
+                                        "containerPort": 50005,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            }
+                        ],
+                        "hostAliases": [
+                            {
+                                "hostnames": [
+                                    "sla-bft-node1"
+                                ],
+                                "ip": "0.0.0.0"
+                            }
+                        ],
+                        "securityContext": {
+                            "fsGroup": 1000,
+                            "runAsGroup": 1000,
+                            "runAsUser": 1000
+                        },
+                        "volumes": [
+                            {
+                                "configMap": {
+                                    "name": "sla-bft-node1-account"
+                                },
+                                "name": "node-account"
+                            },
+                            {
+                                "configMap": {
+                                    "name": "sla-bft-node1-config"
+                                },
+                                "name": "node-config"
+                            },
+                            {
+                                "configMap": {
+                                    "name": "sla-bft-node1-log"
+                                },
+                                "name": "node-log"
+                            }
+                        ]
+                    }
+                },
+                "volumeClaimTemplates": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "PersistentVolumeClaim",
+                        "metadata": {
+                            "name": "datadir"
+                        },
+                        "spec": {
+                            "accessModes": [
+                                "ReadWriteOnce"
+                            ],
+                            "resources": {
+                                "requests": {
+                                    "storage": "10Gi"
+                                }
+                            },
+                            "storageClassName": "ceph-filesystem"
+                        }
+                    }
+                ]
+            }
+        },
+        "node_svc": {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node1"
+                },
+                "name": "sla-bft-node1"
+            },
+            "spec": {
+                "ports": [
+                    {
+                        "name": "network",
+                        "port": 40000,
+                        "protocol": "UDP",
+                        "targetPort": 40000
+                    },
+                    {
+                        "name": "rpc",
+                        "port": 50004,
+                        "protocol": "TCP",
+                        "targetPort": 50004
+                    },
+                    {
+                        "name": "call",
+                        "port": 50002,
+                        "protocol": "TCP",
+                        "targetPort": 50002
+                    }
+                ],
+                "selector": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node1"
+                },
+                "type": "ClusterIP"
+            }
+        }
+    },
+    {
+        "cm_config": {
+            "apiVersion": "v1",
+            "kind": "ConfigMap",
+            "data": {
+                "config.toml": "[network_zenoh]\\nca_cert = \\\"\\\"\\\"\\n-----BEGIN CERTIFICATE-----\\\\r\\nMIIBaTCCAQ+gAwIBAgIJAM43mMOcL6YRMAoGCCqGSM49BAMCMB8xEDAOBgNVBAoM\\\\r\\nB0NJVEFIdWIxCzAJBgNVBAMTAkNBMCAXDTc1MDEwMTAwMDAwMFoYDzQwOTYwMTAx\\\\r\\nMDAwMDAwWjAfMRAwDgYDVQQKDAdDSVRBSHViMQswCQYDVQQDEwJDQTBZMBMGByqG\\\\r\\nSM49AgEGCCqGSM49AwEHA0IABDflNgHiRCzc9ROEXKJ0OX8cJRA6BZHgMMlk750e\\\\r\\n1Gxyx+9Bnz9gGVex5d+tEwGKMBo75BHeXbXJutpxN+NBei2jMjAwMB0GA1UdDgQW\\\\r\\nBBQRpi+cw5g3zndqeJRH6YpxyTs3JjAPBgNVHRMBAf8EBTADAQH/MAoGCCqGSM49\\\\r\\nBAMCA0gAMEUCIQDpxZjXt8arZdOh0wE0iJccHeHHH1AI6rzUx4ZQbtutTwIgP1to\\\\r\\nxAAx/7NGlZvqVzavkbLqoIIAF5f2SyFjRiYcyFU=\\\\r\\n-----END CERTIFICATE-----\\\\r\\n\\\"\\\"\\\"\\ncert = \\\"\\\"\\\"\\n-----BEGIN CERTIFICATE-----\\\\r\\nMIIBXjCCAQSgAwIBAgIJAJe2H9K/6ETUMAoGCCqGSM49BAMCMB8xEDAOBgNVBAoM\\\\r\\nB0NJVEFIdWIxCzAJBgNVBAMTAkNBMCAXDTc1MDEwMTAwMDAwMFoYDzQwOTYwMTAx\\\\r\\nMDAwMDAwWjAqMRAwDgYDVQQKDAdDSVRBSHViMRYwFAYDVQQDEw1zbGEtYmZ0LW5v\\\\r\\nZGUyMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEqCLwkge4PFx8oQbC/G9rte52\\\\r\\n+FWIgfTx/Y42GoIGO6pi2ZRY0Cr+KH5NSDsTeIjzjJCbC38+Zxa3n/2N7+RvPKMc\\\\r\\nMBowGAYDVR0RBBEwD4INc2xhLWJmdC1ub2RlMjAKBggqhkjOPQQDAgNIADBFAiEA\\\\r\\n4tx+bgis1s0o3T0aMcNqs7Pu5BoOfdKZIpNy46b5BggCIGMb8Rv6gXgipRcYxoQP\\\\r\\nw1IDplP++rdUTIbBklYi7pPK\\\\r\\n-----END CERTIFICATE-----\\\\r\\n\\\"\\\"\\\"\\nchain_id = '16fd6e0196d12e7e9ed4e9b7e2b891102e05bb13ebce23472c00791b6688f13f'\\ndomain = 'sla-bft-node2'\\nenable_metrics = true\\ngrpc_port = 50000\\nmetrics_port = 60000\\nnode_address = '/mnt/node_address'\\nport = 40000\\npriv_key = \\\"\\\"\\\"\\n-----BEGIN PRIVATE KEY-----\\\\r\\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgaTq5NLau36BhtSL5\\\\r\\nGD6WmoKVBzv8skHixUFbXmOblhOhRANCAASoIvCSB7g8XHyhBsL8b2u17nb4VYiB\\\\r\\n9PH9jjYaggY7qmLZlFjQKv4ofk1IOxN4iPOMkJsLfz5nFref/Y3v5G88\\\\r\\n-----END PRIVATE KEY-----\\\\r\\n\\\"\\\"\\\"\\nprotocol = 'quic'\\nvalidator_address = '/mnt/validator_address'\\n\\n[[network_zenoh.modules]]\\nhostname = '127.0.0.1'\\nmodule_name = 'consensus'\\nport = 50001\\n\\n[[network_zenoh.modules]]\\nhostname = '127.0.0.1'\\nmodule_name = 'controller'\\nport = 50004\\n\\n[[network_zenoh.peers]]\\ndomain = 'sla-bft-node0'\\nport = 40000\\nprotocol = 'quic'\\n\\n[[network_zenoh.peers]]\\ndomain = 'sla-bft-node1'\\nport = 40000\\nprotocol = 'quic'\\n\\n[[network_zenoh.peers]]\\ndomain = 'sla-bft-node3'\\nport = 40000\\nprotocol = 'quic'\\n\\n[consensus_bft]\\nconsensus_port = 50001\\ncontroller_port = 50004\\ncrypto_port = 50005\\nenable_metrics = true\\nmetrics_port = 60001\\nnetwork_port = 50000\\nnode_address = '/mnt/node_address'\\n\\n[executor_evm]\\nenable_metrics = true\\nexecutor_port = 50002\\nmetrics_port = 60002\\n\\n[storage_rocksdb]\\ncrypto_port = 50005\\nenable_metrics = true\\nmetrics_port = 60003\\nstorage_port = 50003\\n\\n[genesis_block]\\nprevhash = '0x0000000000000000000000000000000000000000000000000000000000000000'\\ntimestamp = 1672885240215\\n\\n[system_config]\\nadmin = '9bab5858df4a9e84ff3958884a01a4fce5e07edb'\\nblock_interval = 3\\nblock_limit = 100\\nchain_id = '16fd6e0196d12e7e9ed4e9b7e2b891102e05bb13ebce23472c00791b6688f13f'\\nquota_limit = 1073741824\\nvalidators = [\\n    'bae6fbe2b15a16d3ce73ef86cc36b11f0dbdbb41',\\n    'ace0bf19656b661bfeb29ec91eed6c59f9e2e3cc',\\n    'ca1fd593cb5d8d89c1f6576f4b0a01097b67460f',\\n    '2c14a2fa6c16f5b4643e904a98fcfcb0f0364472',\\n]\\nversion = 0\\n\\n[controller]\\nconsensus_port = 50001\\ncontroller_port = 50004\\ncrypto_port = 50005\\nenable_metrics = true\\nexecutor_port = 50002\\nmetrics_port = 60004\\nnetwork_port = 50000\\nnode_address = '/mnt/node_address'\\nstorage_port = 50003\\nvalidator_address_len = 20\\n\\n[crypto_sm]\\ncrypto_port = 50005\\nenable_metrics = true\\nmetrics_port = 60005\\n\\n"
+            },
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node2"
+                },
+                "name": "sla-bft-node2-config"
+            }
+        },
+        "cm_log": {
+            "apiVersion": "v1",
+            "kind": "ConfigMap",
+            "data": {
+                "consensus-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/consensus-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/consensus-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "controller-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/controller-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/controller-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "crypto-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/crypto-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/crypto-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "executor-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/executor-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/executor-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "network-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/network-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/network-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "storage-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/storage-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/storage-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n"
+            },
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node2"
+                },
+                "name": "sla-bft-node2-log"
+            }
+        },
+        "cm_account": {
+            "apiVersion": "v1",
+            "kind": "ConfigMap",
+            "binaryData": {
+                "private_key": "MjM3ZjE1N2Y3MmEyODE1ZTNiNzY0Y2RiNmQ4MjVlYTAzM2QxMzQxYWZmNGM1OTRhM2ZhNGY1ZGFiMWI4MTM3NA=="
+            },
+            "data": {
+                "node_address": "ca1fd593cb5d8d89c1f6576f4b0a01097b67460f",
+                "validator_address": "ca1fd593cb5d8d89c1f6576f4b0a01097b67460f"
+            },
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node2"
+                },
+                "name": "sla-bft-node2-account"
+            }
+        },
+        "statefulset": {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node2"
+                },
+                "name": "sla-bft-node2"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app.kubernetes.io/chain-name": "sla-bft",
+                        "app.kubernetes.io/chain-node": "sla-bft-node2"
+                    }
+                },
+                "serviceName": "",
+                "template": {
+                    "metadata": {
+                        "labels": {
+                            "app.kubernetes.io/chain-name": "sla-bft",
+                            "app.kubernetes.io/chain-node": "sla-bft-node2"
+                        }
+                    },
+                    "spec": {
+                        "affinity": {
+                            "podAntiAffinity": {
+                                "preferredDuringSchedulingIgnoredDuringExecution": [
+                                    {
+                                        "podAffinityTerm": {
+                                            "labelSelector": {
+                                                "matchExpressions": [
+                                                    {
+                                                        "key": "app.kubernetes.io/chain-name",
+                                                        "operator": "In",
+                                                        "values": [
+                                                            "sla-bft"
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "topologyKey": "kubernetes.io/hostname"
+                                        },
+                                        "weight": 100
+                                    }
+                                ]
+                            }
+                        },
+                        "containers": [
+                            {
+                                "command": [
+                                    "network",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/network-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/network_zenoh:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50000"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "network",
+                                "ports": [
+                                    {
+                                        "containerPort": 40000,
+                                        "name": "network",
+                                        "protocol": "UDP"
+                                    },
+                                    {
+                                        "containerPort": 50000,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "consensus",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/consensus-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/consensus_bft:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50001"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "consensus",
+                                "ports": [
+                                    {
+                                        "containerPort": 50001,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "executor",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/executor-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/executor_evm:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50002"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "executor",
+                                "ports": [
+                                    {
+                                        "containerPort": 50002,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "storage",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/storage-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/storage_rocksdb:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50003"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "storage",
+                                "ports": [
+                                    {
+                                        "containerPort": 50003,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "controller",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/controller-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/controller:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50004"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 60,
+                                    "periodSeconds": 10
+                                },
+                                "name": "controller",
+                                "ports": [
+                                    {
+                                        "containerPort": 50004,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "crypto",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/crypto-log4rs.yaml",
+                                    "-p",
+                                    "/mnt/private_key"
+                                ],
+                                "image": "docker.io/citacloud/crypto_sm:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50005"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "crypto",
+                                "ports": [
+                                    {
+                                        "containerPort": 50005,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            }
+                        ],
+                        "hostAliases": [
+                            {
+                                "hostnames": [
+                                    "sla-bft-node2"
+                                ],
+                                "ip": "0.0.0.0"
+                            }
+                        ],
+                        "securityContext": {
+                            "fsGroup": 1000,
+                            "runAsGroup": 1000,
+                            "runAsUser": 1000
+                        },
+                        "volumes": [
+                            {
+                                "configMap": {
+                                    "name": "sla-bft-node2-account"
+                                },
+                                "name": "node-account"
+                            },
+                            {
+                                "configMap": {
+                                    "name": "sla-bft-node2-config"
+                                },
+                                "name": "node-config"
+                            },
+                            {
+                                "configMap": {
+                                    "name": "sla-bft-node2-log"
+                                },
+                                "name": "node-log"
+                            }
+                        ]
+                    }
+                },
+                "volumeClaimTemplates": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "PersistentVolumeClaim",
+                        "metadata": {
+                            "name": "datadir"
+                        },
+                        "spec": {
+                            "accessModes": [
+                                "ReadWriteOnce"
+                            ],
+                            "resources": {
+                                "requests": {
+                                    "storage": "10Gi"
+                                }
+                            },
+                            "storageClassName": "ceph-filesystem"
+                        }
+                    }
+                ]
+            }
+        },
+        "node_svc": {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node2"
+                },
+                "name": "sla-bft-node2"
+            },
+            "spec": {
+                "ports": [
+                    {
+                        "name": "network",
+                        "port": 40000,
+                        "protocol": "UDP",
+                        "targetPort": 40000
+                    },
+                    {
+                        "name": "rpc",
+                        "port": 50004,
+                        "protocol": "TCP",
+                        "targetPort": 50004
+                    },
+                    {
+                        "name": "call",
+                        "port": 50002,
+                        "protocol": "TCP",
+                        "targetPort": 50002
+                    }
+                ],
+                "selector": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node2"
+                },
+                "type": "ClusterIP"
+            }
+        }
+    },
+    {
+        "cm_config": {
+            "apiVersion": "v1",
+            "kind": "ConfigMap",
+            "data": {
+                "config.toml": "[network_zenoh]\\nca_cert = \\\"\\\"\\\"\\n-----BEGIN CERTIFICATE-----\\\\r\\nMIIBaTCCAQ+gAwIBAgIJAM43mMOcL6YRMAoGCCqGSM49BAMCMB8xEDAOBgNVBAoM\\\\r\\nB0NJVEFIdWIxCzAJBgNVBAMTAkNBMCAXDTc1MDEwMTAwMDAwMFoYDzQwOTYwMTAx\\\\r\\nMDAwMDAwWjAfMRAwDgYDVQQKDAdDSVRBSHViMQswCQYDVQQDEwJDQTBZMBMGByqG\\\\r\\nSM49AgEGCCqGSM49AwEHA0IABDflNgHiRCzc9ROEXKJ0OX8cJRA6BZHgMMlk750e\\\\r\\n1Gxyx+9Bnz9gGVex5d+tEwGKMBo75BHeXbXJutpxN+NBei2jMjAwMB0GA1UdDgQW\\\\r\\nBBQRpi+cw5g3zndqeJRH6YpxyTs3JjAPBgNVHRMBAf8EBTADAQH/MAoGCCqGSM49\\\\r\\nBAMCA0gAMEUCIQDpxZjXt8arZdOh0wE0iJccHeHHH1AI6rzUx4ZQbtutTwIgP1to\\\\r\\nxAAx/7NGlZvqVzavkbLqoIIAF5f2SyFjRiYcyFU=\\\\r\\n-----END CERTIFICATE-----\\\\r\\n\\\"\\\"\\\"\\ncert = \\\"\\\"\\\"\\n-----BEGIN CERTIFICATE-----\\\\r\\nMIIBXDCCAQOgAwIBAgIIQl6ZfrVDsiYwCgYIKoZIzj0EAwIwHzEQMA4GA1UECgwH\\\\r\\nQ0lUQUh1YjELMAkGA1UEAxMCQ0EwIBcNNzUwMTAxMDAwMDAwWhgPNDA5NjAxMDEw\\\\r\\nMDAwMDBaMCoxEDAOBgNVBAoMB0NJVEFIdWIxFjAUBgNVBAMTDXNsYS1iZnQtbm9k\\\\r\\nZTMwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATHjU406XwTPF8qCP3GdXKza7WH\\\\r\\nI1mBM4pD++MHMreHeWgEvWaeQxh2bJs/q5hVNi2pcTD2fUkGsien1mVkTiBKoxww\\\\r\\nGjAYBgNVHREEETAPgg1zbGEtYmZ0LW5vZGUzMAoGCCqGSM49BAMCA0cAMEQCIFKz\\\\r\\nElzgWDL55nVg3P3RQYdMZSpJxpKz/BJvOPGeraTyAiBkdB4oUpoQCgn2IiFga5Mr\\\\r\\n4JME25ZSuXL9C1sClGRQ9w==\\\\r\\n-----END CERTIFICATE-----\\\\r\\n\\\"\\\"\\\"\\nchain_id = '16fd6e0196d12e7e9ed4e9b7e2b891102e05bb13ebce23472c00791b6688f13f'\\ndomain = 'sla-bft-node3'\\nenable_metrics = true\\ngrpc_port = 50000\\nmetrics_port = 60000\\nnode_address = '/mnt/node_address'\\nport = 40000\\npriv_key = \\\"\\\"\\\"\\n-----BEGIN PRIVATE KEY-----\\\\r\\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg+6HWduRxs4mXiFHh\\\\r\\n1bvltSSwR4EoFAzjij3PMXhDon6hRANCAATHjU406XwTPF8qCP3GdXKza7WHI1mB\\\\r\\nM4pD++MHMreHeWgEvWaeQxh2bJs/q5hVNi2pcTD2fUkGsien1mVkTiBK\\\\r\\n-----END PRIVATE KEY-----\\\\r\\n\\\"\\\"\\\"\\nprotocol = 'quic'\\nvalidator_address = '/mnt/validator_address'\\n\\n[[network_zenoh.modules]]\\nhostname = '127.0.0.1'\\nmodule_name = 'consensus'\\nport = 50001\\n\\n[[network_zenoh.modules]]\\nhostname = '127.0.0.1'\\nmodule_name = 'controller'\\nport = 50004\\n\\n[[network_zenoh.peers]]\\ndomain = 'sla-bft-node0'\\nport = 40000\\nprotocol = 'quic'\\n\\n[[network_zenoh.peers]]\\ndomain = 'sla-bft-node1'\\nport = 40000\\nprotocol = 'quic'\\n\\n[[network_zenoh.peers]]\\ndomain = 'sla-bft-node2'\\nport = 40000\\nprotocol = 'quic'\\n\\n[consensus_bft]\\nconsensus_port = 50001\\ncontroller_port = 50004\\ncrypto_port = 50005\\nenable_metrics = true\\nmetrics_port = 60001\\nnetwork_port = 50000\\nnode_address = '/mnt/node_address'\\n\\n[executor_evm]\\nenable_metrics = true\\nexecutor_port = 50002\\nmetrics_port = 60002\\n\\n[storage_rocksdb]\\ncrypto_port = 50005\\nenable_metrics = true\\nmetrics_port = 60003\\nstorage_port = 50003\\n\\n[genesis_block]\\nprevhash = '0x0000000000000000000000000000000000000000000000000000000000000000'\\ntimestamp = 1672885240215\\n\\n[system_config]\\nadmin = '9bab5858df4a9e84ff3958884a01a4fce5e07edb'\\nblock_interval = 3\\nblock_limit = 100\\nchain_id = '16fd6e0196d12e7e9ed4e9b7e2b891102e05bb13ebce23472c00791b6688f13f'\\nquota_limit = 1073741824\\nvalidators = [\\n    'bae6fbe2b15a16d3ce73ef86cc36b11f0dbdbb41',\\n    'ace0bf19656b661bfeb29ec91eed6c59f9e2e3cc',\\n    'ca1fd593cb5d8d89c1f6576f4b0a01097b67460f',\\n    '2c14a2fa6c16f5b4643e904a98fcfcb0f0364472',\\n]\\nversion = 0\\n\\n[controller]\\nconsensus_port = 50001\\ncontroller_port = 50004\\ncrypto_port = 50005\\nenable_metrics = true\\nexecutor_port = 50002\\nmetrics_port = 60004\\nnetwork_port = 50000\\nnode_address = '/mnt/node_address'\\nstorage_port = 50003\\nvalidator_address_len = 20\\n\\n[crypto_sm]\\ncrypto_port = 50005\\nenable_metrics = true\\nmetrics_port = 60005\\n\\n"
+            },
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node3"
+                },
+                "name": "sla-bft-node3-config"
+            }
+        },
+        "cm_log": {
+            "apiVersion": "v1",
+            "kind": "ConfigMap",
+            "data": {
+                "consensus-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/consensus-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/consensus-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "controller-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/controller-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/controller-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "crypto-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/crypto-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/crypto-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "executor-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/executor-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/executor-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "network-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/network-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/network-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n",
+                "storage-log4rs.yaml": "# Scan this file for changes every 30 seconds\\nrefresh_rate: 30 seconds\\n\\nappenders:\\n# An appender named \\\"stdout\\\" that writes to stdout\\n  stdout:\\n    kind: console\\n\\n  journey-service:\\n    kind: rolling_file\\n    path: \\\"logs/storage-service.log\\\"\\n    policy:\\n      # Identifies which policy is to be used. If no kind is specified, it will\\n      # default to \\\"compound\\\".\\n      kind: compound\\n      # The remainder of the configuration is passed along to the policy's\\n      # deserializer, and will vary based on the kind of policy.\\n      trigger:\\n        kind: size\\n        limit: 50mb\\n      roller:\\n        kind: fixed_window\\n        base: 1\\n        count: 5\\n        pattern: \\\"logs/storage-service.{}.gz\\\"\\n\\n# Set the default logging level and attach the default appender to the root\\nroot:\\n  level: info\\n  appenders:\\n    - journey-service\\n    - stdout\\n\\n# Quinn will continuously print unwanted logs at the info level: https://github.com/quinn-rs/quinn/issues/1322 \\nloggers:\\n  quinn:\\n    level: warn\\n"
+            },
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node3"
+                },
+                "name": "sla-bft-node3-log"
+            }
+        },
+        "cm_account": {
+            "apiVersion": "v1",
+            "kind": "ConfigMap",
+            "binaryData": {
+                "private_key": "NzA5NWIzN2M0MmY1YTAyMjcwNjdmMjg3NDA0NWQ0YTIwNjk1YmVmMGU1NjgxZjc2YWUxYzBiYWUxODU2YjE5OA=="
+            },
+            "data": {
+                "node_address": "2c14a2fa6c16f5b4643e904a98fcfcb0f0364472",
+                "validator_address": "2c14a2fa6c16f5b4643e904a98fcfcb0f0364472"
+            },
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node3"
+                },
+                "name": "sla-bft-node3-account"
+            }
+        },
+        "statefulset": {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node3"
+                },
+                "name": "sla-bft-node3"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app.kubernetes.io/chain-name": "sla-bft",
+                        "app.kubernetes.io/chain-node": "sla-bft-node3"
+                    }
+                },
+                "serviceName": "",
+                "template": {
+                    "metadata": {
+                        "labels": {
+                            "app.kubernetes.io/chain-name": "sla-bft",
+                            "app.kubernetes.io/chain-node": "sla-bft-node3"
+                        }
+                    },
+                    "spec": {
+                        "affinity": {
+                            "podAntiAffinity": {
+                                "preferredDuringSchedulingIgnoredDuringExecution": [
+                                    {
+                                        "podAffinityTerm": {
+                                            "labelSelector": {
+                                                "matchExpressions": [
+                                                    {
+                                                        "key": "app.kubernetes.io/chain-name",
+                                                        "operator": "In",
+                                                        "values": [
+                                                            "sla-bft"
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "topologyKey": "kubernetes.io/hostname"
+                                        },
+                                        "weight": 100
+                                    }
+                                ]
+                            }
+                        },
+                        "containers": [
+                            {
+                                "command": [
+                                    "network",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/network-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/network_zenoh:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50000"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "network",
+                                "ports": [
+                                    {
+                                        "containerPort": 40000,
+                                        "name": "network",
+                                        "protocol": "UDP"
+                                    },
+                                    {
+                                        "containerPort": 50000,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "consensus",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/consensus-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/consensus_bft:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50001"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "consensus",
+                                "ports": [
+                                    {
+                                        "containerPort": 50001,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "executor",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/executor-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/executor_evm:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50002"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "executor",
+                                "ports": [
+                                    {
+                                        "containerPort": 50002,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "storage",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/storage-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/storage_rocksdb:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50003"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "storage",
+                                "ports": [
+                                    {
+                                        "containerPort": 50003,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "controller",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/controller-log4rs.yaml"
+                                ],
+                                "image": "docker.io/citacloud/controller:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50004"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 60,
+                                    "periodSeconds": 10
+                                },
+                                "name": "controller",
+                                "ports": [
+                                    {
+                                        "containerPort": 50004,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            },
+                            {
+                                "command": [
+                                    "crypto",
+                                    "run",
+                                    "-c",
+                                    "/etc/cita-cloud/config/config.toml",
+                                    "-l",
+                                    "/etc/cita-cloud/log/crypto-log4rs.yaml",
+                                    "-p",
+                                    "/mnt/private_key"
+                                ],
+                                "image": "docker.io/citacloud/crypto_sm:v6.6.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "grpc_health_probe",
+                                            "-addr=127.0.0.1:50005"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "periodSeconds": 10
+                                },
+                                "name": "crypto",
+                                "ports": [
+                                    {
+                                        "containerPort": 50005,
+                                        "name": "grpc",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "4000m",
+                                        "memory": "8192Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "10m",
+                                        "memory": "32Mi"
+                                    }
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data",
+                                        "name": "datadir"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/config",
+                                        "name": "node-config"
+                                    },
+                                    {
+                                        "mountPath": "/etc/cita-cloud/log",
+                                        "name": "node-log"
+                                    },
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "node-account"
+                                    }
+                                ],
+                                "workingDir": "/data"
+                            }
+                        ],
+                        "hostAliases": [
+                            {
+                                "hostnames": [
+                                    "sla-bft-node3"
+                                ],
+                                "ip": "0.0.0.0"
+                            }
+                        ],
+                        "securityContext": {
+                            "fsGroup": 1000,
+                            "runAsGroup": 1000,
+                            "runAsUser": 1000
+                        },
+                        "volumes": [
+                            {
+                                "configMap": {
+                                    "name": "sla-bft-node3-account"
+                                },
+                                "name": "node-account"
+                            },
+                            {
+                                "configMap": {
+                                    "name": "sla-bft-node3-config"
+                                },
+                                "name": "node-config"
+                            },
+                            {
+                                "configMap": {
+                                    "name": "sla-bft-node3-log"
+                                },
+                                "name": "node-log"
+                            }
+                        ]
+                    }
+                },
+                "volumeClaimTemplates": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "PersistentVolumeClaim",
+                        "metadata": {
+                            "name": "datadir"
+                        },
+                        "spec": {
+                            "accessModes": [
+                                "ReadWriteOnce"
+                            ],
+                            "resources": {
+                                "requests": {
+                                    "storage": "10Gi"
+                                }
+                            },
+                            "storageClassName": "ceph-filesystem"
+                        }
+                    }
+                ]
+            }
+        },
+        "node_svc": {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "labels": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node3"
+                },
+                "name": "sla-bft-node3"
+            },
+            "spec": {
+                "ports": [
+                    {
+                        "name": "network",
+                        "port": 40000,
+                        "protocol": "UDP",
+                        "targetPort": 40000
+                    },
+                    {
+                        "name": "rpc",
+                        "port": 50004,
+                        "protocol": "TCP",
+                        "targetPort": 50004
+                    },
+                    {
+                        "name": "call",
+                        "port": 50002,
+                        "protocol": "TCP",
+                        "targetPort": 50002
+                    }
+                ],
+                "selector": {
+                    "app.kubernetes.io/chain-name": "sla-bft",
+                    "app.kubernetes.io/chain-node": "sla-bft-node3"
+                },
+                "type": "ClusterIP"
+            }
+        }
+    }
+]
