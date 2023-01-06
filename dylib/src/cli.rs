@@ -18,7 +18,7 @@ use jni::sys::{jobject, jstring};
 use jni::JNIEnv;
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_updateAdmin(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_updateAdmin(
     env: JNIEnv,
     _class: JClass,
     controller_addr: JString,
@@ -49,7 +49,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_updateAdmin(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_setBlockInterval(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_setBlockInterval(
     env: JNIEnv,
     _class: JClass,
     controller_addr: JString,
@@ -82,7 +82,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_setBlockInterval(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_updateValidators(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_updateValidators(
     env: JNIEnv,
     _class: JClass,
     controller_addr: JString,
@@ -121,7 +121,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_updateValidators(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_emergencyBrake(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_emergencyBrake(
     env: JNIEnv,
     _class: JClass,
     controller_addr: JString,
@@ -152,7 +152,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_emergencyBrake(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_setQuotaLimit(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_setQuotaLimit(
     env: JNIEnv,
     _class: JClass,
     controller_addr: JString,

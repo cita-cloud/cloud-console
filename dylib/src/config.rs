@@ -18,7 +18,7 @@ use jni::sys::jstring;
 use jni::JNIEnv;
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_updateChainConfig(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_updateChainConfig(
     env: JNIEnv,
     _class: JClass,
     input: JString,

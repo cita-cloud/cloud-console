@@ -18,7 +18,7 @@ use jni::sys::jstring;
 use jni::JNIEnv;
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBlockNumber(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_getBlockNumber(
     env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
@@ -34,7 +34,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBlockNumber(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getSystemConfig(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_getSystemConfig(
     env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
@@ -50,7 +50,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getSystemConfig(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getAbi(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_getAbi(
     env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
@@ -71,7 +71,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getAbi(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getAccountNonce(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_getAccountNonce(
     env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
@@ -92,7 +92,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getAccountNonce(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBalance(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_getBalance(
     env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
@@ -113,7 +113,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBalance(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBlockHash(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_getBlockHash(
     env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
@@ -134,7 +134,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBlockHash(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBlock(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_getBlock(
     env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
@@ -155,7 +155,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getBlock(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getCode(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_getCode(
     env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
@@ -176,7 +176,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getCode(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getReceipt(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_getReceipt(
     env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
@@ -197,7 +197,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getReceipt(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getTx(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_getTx(
     env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
@@ -218,7 +218,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_getTx(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_call(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_call(
     env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
@@ -254,7 +254,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_call(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_create(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_create(
     env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
@@ -285,7 +285,7 @@ pub extern "system" fn Java_com_cita_cloud_ConsoleV1_create(
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_sendTx(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_sendTx(
     env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
