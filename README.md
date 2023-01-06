@@ -18,7 +18,7 @@ cloud-util = { package = "cloud-util", git = "https://github.com/cita-cloud/clou
 ```rust
 ...
 #[no_mangle]
-pub extern "system" fn Java_com_cita_cloud_ConsoleV1_updateChainConfig(
+pub extern "system" fn Java_com_cita_cloud_v1_Console_updateChainConfig(
     env: JNIEnv,
 ...
 ```
@@ -45,11 +45,11 @@ Linux:
 
 ### 4. 在`java_lib`中新建对应版本类型的api类，暴露动态链接库中的方法
 
-./java_lib/console/src/main/java/com/cita/cloud/ConsoleV1.java
+./java_lib/console/src/main/java/com/cita/cloud/v1/Console.java
 ```java
 package com.cita.cloud;
 
-public class ConsoleV1 {
+public class Console {
     ...
     
     public static native String updateChainConfig(String input);
