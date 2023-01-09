@@ -8,8 +8,8 @@ edition = "2021"
 common = { path = "../common" }
 cldi = { git = "https://github.com/cita-cloud/cloud-cli", branch = "lib_for_console" }
 cloud-config = { git = "https://github.com/cita-cloud/cloud-config", branch = "lib_for_console" }
-cita_cloud_proto = { package = "cita_cloud_proto", git = "https://github.com/cita-cloud/cloud-common-rs.git" }
-cloud-util = { package = "cloud-util", git = "https://github.com/cita-cloud/cloud-common-rs.git" }
+cita_cloud_proto = { package = "cita_cloud_proto", git = "https://github.com/cita-cloud/cloud-common-rs.git", branch = "optional_feature" }
+cloud-util = { package = "cloud-util", git = "https://github.com/cita-cloud/cloud-common-rs.git", branch = "optional_feature" }
 tokio = { version = "1.21", features = ["full"] }
 hex = "0.4"
 serde = { version = "1.0", features = ["derive"] }
