@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        build: [linux, linux-arm, linux-musl, linux-musl-arm, win-msvc, macos, macos-arm]
+        build: [linux, linux-arm, win-msvc, macos, macos-arm]
         include:
           - build: linux
             os: ubuntu-latest
