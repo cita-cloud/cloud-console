@@ -17,7 +17,7 @@ jobs:
   publish-release:
     name: Publish Release
     env:
-      BINARY_NAME: cldi
+      BINARY_NAME: console_dylib
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -79,10 +79,10 @@ jobs:
           if [ "${{ matrix.os }}" == "windows-latest" ]; then
             7z a ${{ env.BINARY_NAME }}-${{ matrix.target }}.zip $PWD/target/${{ matrix.target }}/release/${{ env.BINARY_NAME }}.dll $PWD/java_lib/console/build/libs/
           elif [ "${{ matrix.os }}" == "ubuntu-latest" ]; then
-            tar cvf ${{ env.BINARY_NAME }}-${{ matrix.target }}.tar.gz -C target/${{ matrix.target }}/release ${{ env.BINARY_NAME }}.so
+            tar cvf ${{ env.BINARY_NAME }}-${{ matrix.target }}.tar.gz -C target/${{ matrix.target }}/release lib${{ env.BINARY_NAME }}.so
             tar rvf ${{ env.BINARY_NAME }}-${{ matrix.target }}.tar.gz -C java_lib/console/build/libs console-0.0.1.jar
           else
-            tar cvf ${{ env.BINARY_NAME }}-${{ matrix.target }}.tar.gz -C target/${{ matrix.target }}/release ${{ env.BINARY_NAME }}.dylib
+            tar cvf ${{ env.BINARY_NAME }}-${{ matrix.target }}.tar.gz -C target/${{ matrix.target }}/release lib${{ env.BINARY_NAME }}.dylib
             tar rvf ${{ env.BINARY_NAME }}-${{ matrix.target }}.tar.gz -C java_lib/console/build/libs console-0.0.1.jar
           fi
       
