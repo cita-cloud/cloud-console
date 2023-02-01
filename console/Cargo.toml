@@ -6,11 +6,11 @@ edition = "2021"
 
 [dependencies]
 common = { path = "../common" }
-cldi = { git = "https://github.com/cita-cloud/cloud-cli", branch = "lib_for_console" }
-cloud-config = { git = "https://github.com/cita-cloud/cloud-config", branch = "lib_for_console" }
+cldi = { git = "https://github.com/cita-cloud/cloud-cli" }
+cloud-config = { git = "https://github.com/cita-cloud/cloud-config" }
 cita_cloud_proto = { package = "cita_cloud_proto", git = "https://github.com/cita-cloud/cloud-common-rs.git" }
 cloud-util = { package = "cloud-util", git = "https://github.com/cita-cloud/cloud-common-rs.git" }
-tokio = { version = "1.21", features = ["full"] }
+tokio = { version = "1.25", features = ["full"] }
 hex = "0.4"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
