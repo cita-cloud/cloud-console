@@ -105,12 +105,11 @@ pub fn get_tx(cache_addr: &str, hash: &str) -> Response<String> {
 pub fn call(cache_addr: &str, data: &str, from: &str, height: &str, to: &str) -> Response<String> {
     let body = format!(
         r#"{{
-        "data": "{}",
-        "from": "{}",
-        "height": {},
-        "to": "{}"
-      }}"#,
-        data, from, height, to
+        "data": "{data}",
+        "from": "{from}",
+        "height": {height},
+        "to": "{to}"
+      }}"#
     );
     http_post(&format!("{}/{}", cache_addr, "api/call"), &body)
 }
@@ -118,11 +117,10 @@ pub fn call(cache_addr: &str, data: &str, from: &str, height: &str, to: &str) ->
 pub fn create(cache_addr: &str, block_count: &str, data: &str, value: &str) -> Response<String> {
     let body = format!(
         r#"{{
-        "block_count": {},
-        "data": "{}",
-        "value": "{}"
-      }}"#,
-        block_count, data, value
+        "block_count": {block_count},
+        "data": "{data}",
+        "value": "{value}"
+      }}"#
     );
     http_post(&format!("{}/{}", cache_addr, "api/create"), &body)
 }
@@ -136,12 +134,11 @@ pub fn send_tx(
 ) -> Response<String> {
     let body = format!(
         r#"{{
-        "block_count": {},
-        "data": "{}",
-        "to": "{}",
-        "value": "{}"
-      }}"#,
-        block_count, data, to, value
+        "block_count": {block_count},
+        "data": "{data}",
+        "to": "{to}",
+        "value": "{value}"
+      }}"#
     );
     http_post(&format!("{}/{}", cache_addr, "api/sendTx"), &body)
 }

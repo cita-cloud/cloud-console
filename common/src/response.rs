@@ -29,7 +29,7 @@ impl<T: Serialize> Response<T> {
     pub fn new(code: StatusCode, data: T) -> Response<T> {
         Self {
             code,
-            msg: format!("{:?}", code),
+            msg: format!("{code:?}"),
             data: Some(data),
         }
     }
@@ -55,7 +55,7 @@ impl<T: Serialize> From<StatusCode> for Response<T> {
     fn from(code: StatusCode) -> Self {
         Self {
             code,
-            msg: format!("{:?}", code),
+            msg: format!("{code:?}"),
             data: None,
         }
     }

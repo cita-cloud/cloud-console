@@ -31,7 +31,7 @@ pub fn update_admin(
 ) -> Response<String> {
     let new_admin: Address = match parse_addr(new_admin.as_str()) {
         Ok(address) => address,
-        Err(e) => return Response::new(StatusCode::Error, format!("{}", e)),
+        Err(e) => return Response::new(StatusCode::Error, format!("{e}")),
     };
 
     let rt = Runtime::new().unwrap();
@@ -51,7 +51,7 @@ pub fn update_admin(
         ))
     } {
         Ok(hash) => Response::new(StatusCode::Success, hash.display()),
-        Err(e) => Response::new(StatusCode::Error, format!("{}", e)),
+        Err(e) => Response::new(StatusCode::Error, format!("{e}")),
     }
 }
 
@@ -63,7 +63,7 @@ pub fn set_block_interval(
 ) -> Response<String> {
     let block_interval = match block_interval.parse::<u32>() {
         Ok(block_interval) => block_interval,
-        Err(e) => return Response::new(StatusCode::Error, format!("{}", e)),
+        Err(e) => return Response::new(StatusCode::Error, format!("{e}")),
     };
 
     let rt = Runtime::new().unwrap();
@@ -83,7 +83,7 @@ pub fn set_block_interval(
         ))
     } {
         Ok(hash) => Response::new(StatusCode::Success, hash.display()),
-        Err(e) => Response::new(StatusCode::Error, format!("{}", e)),
+        Err(e) => Response::new(StatusCode::Error, format!("{e}")),
     }
 }
 
@@ -97,7 +97,7 @@ pub fn update_validators(
     for validator in validators_string {
         match parse_validator_addr(validator.as_str()) {
             Ok(validator) => validators.push(validator),
-            Err(e) => return Response::new(StatusCode::Error, format!("{}", e)),
+            Err(e) => return Response::new(StatusCode::Error, format!("{e}")),
         }
     }
 
@@ -118,7 +118,7 @@ pub fn update_validators(
         ))
     } {
         Ok(hash) => Response::new(StatusCode::Success, hash.display()),
-        Err(e) => Response::new(StatusCode::Error, format!("{}", e)),
+        Err(e) => Response::new(StatusCode::Error, format!("{e}")),
     }
 }
 
@@ -151,7 +151,7 @@ pub fn emergency_brake(
         ))
     } {
         Ok(hash) => Response::new(StatusCode::Success, hash.display()),
-        Err(e) => Response::new(StatusCode::Error, format!("{}", e)),
+        Err(e) => Response::new(StatusCode::Error, format!("{e}")),
     }
 }
 
@@ -163,7 +163,7 @@ pub fn set_quota_limit(
 ) -> Response<String> {
     let quota_limit = match quota_limit.parse::<u64>() {
         Ok(quota_limit) => quota_limit,
-        Err(e) => return Response::new(StatusCode::Error, format!("{}", e)),
+        Err(e) => return Response::new(StatusCode::Error, format!("{e}")),
     };
 
     let rt = Runtime::new().unwrap();
@@ -183,6 +183,6 @@ pub fn set_quota_limit(
         ))
     } {
         Ok(hash) => Response::new(StatusCode::Success, hash.display()),
-        Err(e) => Response::new(StatusCode::Error, format!("{}", e)),
+        Err(e) => Response::new(StatusCode::Error, format!("{e}")),
     }
 }
