@@ -19,12 +19,12 @@ use jni::JNIEnv;
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_getBlockNumber(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
 ) -> jstring {
     let cache_addr: String = env
-        .get_string(cache_addr)
+        .get_string(&cache_addr)
         .expect("Couldn't get java string!")
         .into();
 
@@ -35,12 +35,12 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_getBlockNumber(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_getSystemConfig(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
 ) -> jstring {
     let cache_addr: String = env
-        .get_string(cache_addr)
+        .get_string(&cache_addr)
         .expect("Couldn't get java string!")
         .into();
 
@@ -51,17 +51,17 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_getSystemConfig(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_getAbi(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
     address: JString,
 ) -> jstring {
     let cache_addr: String = env
-        .get_string(cache_addr)
+        .get_string(&cache_addr)
         .expect("Couldn't get java string!")
         .into();
     let address: String = env
-        .get_string(address)
+        .get_string(&address)
         .expect("Couldn't get java string!")
         .into();
 
@@ -72,17 +72,17 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_getAbi(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_getAccountNonce(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
     address: JString,
 ) -> jstring {
     let cache_addr: String = env
-        .get_string(cache_addr)
+        .get_string(&cache_addr)
         .expect("Couldn't get java string!")
         .into();
     let address: String = env
-        .get_string(address)
+        .get_string(&address)
         .expect("Couldn't get java string!")
         .into();
 
@@ -93,17 +93,17 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_getAccountNonce(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_getBalance(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
     address: JString,
 ) -> jstring {
     let cache_addr: String = env
-        .get_string(cache_addr)
+        .get_string(&cache_addr)
         .expect("Couldn't get java string!")
         .into();
     let address: String = env
-        .get_string(address)
+        .get_string(&address)
         .expect("Couldn't get java string!")
         .into();
 
@@ -114,17 +114,17 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_getBalance(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_getBlockHash(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
     block_number: JString,
 ) -> jstring {
     let cache_addr: String = env
-        .get_string(cache_addr)
+        .get_string(&cache_addr)
         .expect("Couldn't get java string!")
         .into();
     let block_number: String = env
-        .get_string(block_number)
+        .get_string(&block_number)
         .expect("Couldn't get java string!")
         .into();
 
@@ -135,17 +135,17 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_getBlockHash(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_getBlock(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
     hash_or_height: JString,
 ) -> jstring {
     let cache_addr: String = env
-        .get_string(cache_addr)
+        .get_string(&cache_addr)
         .expect("Couldn't get java string!")
         .into();
     let hash_or_height: String = env
-        .get_string(hash_or_height)
+        .get_string(&hash_or_height)
         .expect("Couldn't get java string!")
         .into();
 
@@ -156,17 +156,17 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_getBlock(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_getCode(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
     address: JString,
 ) -> jstring {
     let cache_addr: String = env
-        .get_string(cache_addr)
+        .get_string(&cache_addr)
         .expect("Couldn't get java string!")
         .into();
     let address: String = env
-        .get_string(address)
+        .get_string(&address)
         .expect("Couldn't get java string!")
         .into();
 
@@ -177,17 +177,17 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_getCode(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_getReceipt(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
     hash: JString,
 ) -> jstring {
     let cache_addr: String = env
-        .get_string(cache_addr)
+        .get_string(&cache_addr)
         .expect("Couldn't get java string!")
         .into();
     let hash: String = env
-        .get_string(hash)
+        .get_string(&hash)
         .expect("Couldn't get java string!")
         .into();
 
@@ -198,17 +198,17 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_getReceipt(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_getTx(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
     hash: JString,
 ) -> jstring {
     let cache_addr: String = env
-        .get_string(cache_addr)
+        .get_string(&cache_addr)
         .expect("Couldn't get java string!")
         .into();
     let hash: String = env
-        .get_string(hash)
+        .get_string(&hash)
         .expect("Couldn't get java string!")
         .into();
 
@@ -219,7 +219,7 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_getTx(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_call(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
     data: JString,
@@ -228,23 +228,23 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_call(
     to: JString,
 ) -> jstring {
     let cache_addr: String = env
-        .get_string(cache_addr)
+        .get_string(&cache_addr)
         .expect("Couldn't get java string!")
         .into();
     let data: String = env
-        .get_string(data)
+        .get_string(&data)
         .expect("Couldn't get java string!")
         .into();
     let from: String = env
-        .get_string(from)
+        .get_string(&from)
         .expect("Couldn't get java string!")
         .into();
     let height: String = env
-        .get_string(height)
+        .get_string(&height)
         .expect("Couldn't get java string!")
         .into();
     let to: String = env
-        .get_string(to)
+        .get_string(&to)
         .expect("Couldn't get java string!")
         .into();
 
@@ -255,7 +255,7 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_call(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_create(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
     block_count: JString,
@@ -263,19 +263,19 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_create(
     value: JString,
 ) -> jstring {
     let cache_addr: String = env
-        .get_string(cache_addr)
+        .get_string(&cache_addr)
         .expect("Couldn't get java string!")
         .into();
     let block_count: String = env
-        .get_string(block_count)
+        .get_string(&block_count)
         .expect("Couldn't get java string!")
         .into();
     let data: String = env
-        .get_string(data)
+        .get_string(&data)
         .expect("Couldn't get java string!")
         .into();
     let value: String = env
-        .get_string(value)
+        .get_string(&value)
         .expect("Couldn't get java string!")
         .into();
 
@@ -286,7 +286,7 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_create(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_sendTx(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     cache_addr: JString,
     block_count: JString,
@@ -295,23 +295,23 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_sendTx(
     value: JString,
 ) -> jstring {
     let cache_addr: String = env
-        .get_string(cache_addr)
+        .get_string(&cache_addr)
         .expect("Couldn't get java string!")
         .into();
     let block_count: String = env
-        .get_string(block_count)
+        .get_string(&block_count)
         .expect("Couldn't get java string!")
         .into();
     let data: String = env
-        .get_string(data)
+        .get_string(&data)
         .expect("Couldn't get java string!")
         .into();
     let to: String = env
-        .get_string(to)
+        .get_string(&to)
         .expect("Couldn't get java string!")
         .into();
     let value: String = env
-        .get_string(value)
+        .get_string(&value)
         .expect("Couldn't get java string!")
         .into();
 

@@ -13,13 +13,13 @@
 // limitations under the License.
 
 use console::cli::*;
-use jni::objects::{JClass, JString};
-use jni::sys::{jobject, jstring};
+use jni::objects::{JClass, JObjectArray, JString};
+use jni::sys::jstring;
 use jni::JNIEnv;
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_updateAdmin(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     controller_addr: JString,
     crypto_addr: JString,
@@ -27,19 +27,19 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_updateAdmin(
     new_admin: JString,
 ) -> jstring {
     let controller_addr: String = env
-        .get_string(controller_addr)
+        .get_string(&controller_addr)
         .expect("Couldn't get java string!")
         .into();
     let crypto_addr: String = env
-        .get_string(crypto_addr)
+        .get_string(&crypto_addr)
         .expect("Couldn't get java string!")
         .into();
     let admin_addr: String = env
-        .get_string(admin_addr)
+        .get_string(&admin_addr)
         .expect("Couldn't get java string!")
         .into();
     let new_admin: String = env
-        .get_string(new_admin)
+        .get_string(&new_admin)
         .expect("Couldn't get java string!")
         .into();
 
@@ -50,7 +50,7 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_updateAdmin(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_setBlockInterval(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     controller_addr: JString,
     crypto_addr: JString,
@@ -58,19 +58,19 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_setBlockInterval(
     block_interval: JString,
 ) -> jstring {
     let controller_addr: String = env
-        .get_string(controller_addr)
+        .get_string(&controller_addr)
         .expect("Couldn't get java string!")
         .into();
     let crypto_addr: String = env
-        .get_string(crypto_addr)
+        .get_string(&crypto_addr)
         .expect("Couldn't get java string!")
         .into();
     let admin_addr: String = env
-        .get_string(admin_addr)
+        .get_string(&admin_addr)
         .expect("Couldn't get java string!")
         .into();
     let block_interval: String = env
-        .get_string(block_interval)
+        .get_string(&block_interval)
         .expect("Couldn't get java string!")
         .into();
 
@@ -83,31 +83,33 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_setBlockInterval(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_updateValidators(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     controller_addr: JString,
     crypto_addr: JString,
     admin_addr: JString,
-    validators_jobject: jobject,
+    validators_jobject: JObjectArray,
 ) -> jstring {
     let controller_addr: String = env
-        .get_string(controller_addr)
+        .get_string(&controller_addr)
         .expect("Couldn't get java string!")
         .into();
     let crypto_addr: String = env
-        .get_string(crypto_addr)
+        .get_string(&crypto_addr)
         .expect("Couldn't get java string!")
         .into();
     let admin_addr: String = env
-        .get_string(admin_addr)
+        .get_string(&admin_addr)
         .expect("Couldn't get java string!")
         .into();
-    let validators_len = env.get_array_length(validators_jobject).unwrap();
+    let validators_len = env.get_array_length(&validators_jobject).unwrap();
     let mut validators: Vec<String> = Vec::with_capacity(validators_len as usize);
     for i in 0..validators_len {
-        let j_object = env.get_object_array_element(validators_jobject, i).unwrap();
+        let j_object = env
+            .get_object_array_element(&validators_jobject, i)
+            .unwrap();
         let validator = env
-            .get_string(JString::from(j_object))
+            .get_string(&JString::from(j_object))
             .expect("Couldn't get java string!")
             .into();
         validators.push(validator);
@@ -122,7 +124,7 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_updateValidators(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_emergencyBrake(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     controller_addr: JString,
     crypto_addr: JString,
@@ -130,19 +132,19 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_emergencyBrake(
     switch: JString,
 ) -> jstring {
     let controller_addr: String = env
-        .get_string(controller_addr)
+        .get_string(&controller_addr)
         .expect("Couldn't get java string!")
         .into();
     let crypto_addr: String = env
-        .get_string(crypto_addr)
+        .get_string(&crypto_addr)
         .expect("Couldn't get java string!")
         .into();
     let admin_addr: String = env
-        .get_string(admin_addr)
+        .get_string(&admin_addr)
         .expect("Couldn't get java string!")
         .into();
     let switch: String = env
-        .get_string(switch)
+        .get_string(&switch)
         .expect("Couldn't get java string!")
         .into();
 
@@ -153,7 +155,7 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_emergencyBrake(
 
 #[no_mangle]
 pub extern "system" fn Java_com_cita_cloud_v1_Console_setQuotaLimit(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _class: JClass,
     controller_addr: JString,
     crypto_addr: JString,
@@ -161,19 +163,19 @@ pub extern "system" fn Java_com_cita_cloud_v1_Console_setQuotaLimit(
     quota_limit: JString,
 ) -> jstring {
     let controller_addr: String = env
-        .get_string(controller_addr)
+        .get_string(&controller_addr)
         .expect("Couldn't get java string!")
         .into();
     let crypto_addr: String = env
-        .get_string(crypto_addr)
+        .get_string(&crypto_addr)
         .expect("Couldn't get java string!")
         .into();
     let admin_addr: String = env
-        .get_string(admin_addr)
+        .get_string(&admin_addr)
         .expect("Couldn't get java string!")
         .into();
     let quota_limit: String = env
-        .get_string(quota_limit)
+        .get_string(&quota_limit)
         .expect("Couldn't get java string!")
         .into();
 
